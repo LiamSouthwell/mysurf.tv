@@ -111,7 +111,6 @@
             var myPlayer = this;
             myPlayer.muted(true);
             myPlayer.play();
-
         });
 
         async function asyncVideo() {
