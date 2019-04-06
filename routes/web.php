@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 Route::get('/testvideo', 'VideoController@test');
 Route::get('/searchvideo', 'VideoController@search');
+Route::get('/test', function () {
+    return view('test');
+});
