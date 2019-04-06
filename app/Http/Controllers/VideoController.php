@@ -25,20 +25,23 @@ class VideoController extends Controller
 
 
 
-    public function search(){
-    	$client = new Client();
-    	$json = [
-		    'key-data' => [
-		        'account-id' => '6022296345001',
-		        'apis' => ['search'],
-		    ],
-		];
+//    public function search(){
+//    	$client = new Client();
+//    	$json = [
+//		    'key-data' => [
+//		        'account-id' => '6022296345001',
+//		        'apis' => ['search'],
+//		    ],
+//		];
 
 
-    	$res = $client->request('GET', 'https://policy.api.brightcove.com/v1/accounts/6022296345001/policy_keys', [
-    		//ADD AUTHENTICATION IN HEADER @ https://support.brightcove.com/overview-policy-api#Search_videos HEADER SECTION
-            'json' => $json,
-        ]);
+//   	$res = $client->request('GET', 'https://policy.api.brightcove.com/v1/accounts/6022296345001/policy_keys', [
+    		//ADD AUTHENTICATION IN HEADER @ https://support.brightcove.com/overview-policy-api#Search_videos HEADER SECTION    		
+//    		'headers' => [
+//                'Authorization' => 'Bearer {access_token}',
+//            ],
+//            'json' => $json,
+//        ]);
 
     	//$res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/6022296345001/videos', [
         //    'headers' => [
