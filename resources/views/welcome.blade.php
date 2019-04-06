@@ -79,19 +79,25 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+        <div class="content">
+            <div class="title m-b-md">
+                Laravel
+            </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+            <div style="position: relative; display: block; max-width: 960px;">
+                <div style="padding-top: 56.25%;">
+                    <video data-video-id="6023123229001" 
+                        data-account="6022296345001" 
+                        data-player="ExFAwNTvB" 
+                        data-embed="default" 
+                        data-application-id 
+                        class="video-js" 
+                        controls 
+                        style="position: absolute; inset: 0px; width: 100%; height: 100%;">
+                    </video>
+
+
+              <script src="//players.brightcove.net/6022296345001/ExFAwNTvB_default/index.min.js"></script>
                 </div>
             </div>
         </div>
