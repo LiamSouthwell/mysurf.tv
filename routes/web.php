@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/testvideo', 'VideoController@test');
+Route::get('/searchvideo', 'VideoController@search');

@@ -93,13 +93,54 @@
                         data-application-id 
                         class="video-js" 
                         controls 
-                        style="position: absolute; inset: 0px; width: 100%; height: 100%;">
+                        style="position: absolute; inset: 0px; width: 100%; height: 100%;"
+                        id="player">
                     </video>
-
-
-              <script src="//players.brightcove.net/6022296345001/ExFAwNTvB_default/index.min.js"></script>
                 </div>
             </div>
         </div>
     </body>
+    <script src="//players.brightcove.net/6022296345001/ExFAwNTvB_default/index.min.js"></script>
+    <script>
+        videojs.getPlayer('player').on('loadedmetadata', function() {
+            var myPlayer = this;
+            myPlayer.muted(true);
+            myPlayer.play();
+
+        });
+
+        async function asyncVideo() {
+            console.log('Requesting video...');
+            //const response = await fetch('https://edge.api.brightcove.com/playback/v1/accounts/6022296345001');
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                   // Typical action to be performed when the document is ready:
+                   //document.getElementById("demo").innerHTML = xhttp.responseText;
+                   
+                }
+            };
+            xhttp.open("GET", "https://edge.api.brightcove.com/playback/v1/accounts/6022296345001", true);
+            xhttp.send();
+
+
+
+
+            //const response = await fetch('https://edge.api.brightcove.com/playback/v1/accounts/6022296345001');
+            const myJson = await response.json(); //extract JSON from the http response
+            // do something with myJson
+            console.log(myJson);
+
+
+
+            console.log(result);
+            // expected output: 'resolved'
+        }
+
+        asyncVideo();
+
+
+
+    </script>
 </html>
