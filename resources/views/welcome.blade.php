@@ -34,20 +34,7 @@
             <div id="app">
                 <navbar></navbar>
                 <div class="content">
-                    <div style="position: relative; display: block; max-width: 960px;">
-                        <div style="padding-top: 2.25%; height: 200px;">
-                        <video data-video-id="6023123229001" 
-                        data-account="6022296345001" 
-                        data-player="ExFAwNTvB" 
-                        data-embed="default" 
-                        data-application-id 
-                        class="video-js" 
-                        controls 
-                        style="position: absolute; inset: 0px; width: 100%; height: 100%;"
-                        id="player">
-                        </video>
-                        </div>
-                    </div>
+                    <videolist></videolist>
                 </div>
             </div>
         </div>
