@@ -33,8 +33,10 @@
         <div class="container">
             <div id="app">
                 <navbar></navbar>
-                <div class="content">
-                    <videolist></videolist>
+                <div class="row">  
+                    <div class="col-sm-12 col-md-4">
+                        <videolist></videolist>
+                    <div>
                 </div>
             </div>
         </div>
