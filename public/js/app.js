@@ -37002,42 +37002,118 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticStyle: {
-          position: "relative",
-          display: "block",
-          "max-width": "960px"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticStyle: { "padding-top": "2.25%", height: "200px" } },
-          [
-            _c("video", {
-              staticClass: "video-js",
-              staticStyle: {
-                position: "absolute",
-                inset: "0px",
-                width: "100%",
-                height: "100%"
-              },
-              attrs: {
-                "data-video-id": "6023123229001",
-                "data-account": "6022296345001",
-                "data-player": "ExFAwNTvB",
-                "data-embed": "default",
-                "data-application-id": "",
-                controls: "",
-                id: "player"
-              }
-            })
-          ]
-        )
-      ]
-    )
+    return _c("div", [
+      _c(
+        "div",
+        {
+          staticStyle: {
+            position: "relative",
+            display: "block",
+            "max-width": "960px"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticStyle: { "padding-top": "2.25%", height: "200px" } },
+            [
+              _c("video", {
+                staticClass: "video-js",
+                staticStyle: {
+                  position: "absolute",
+                  inset: "0px",
+                  width: "100%",
+                  height: "100%"
+                },
+                attrs: {
+                  "data-video-id": "6023123229001",
+                  "data-account": "6022296345001",
+                  "data-player": "ExFAwNTvB",
+                  "data-embed": "default",
+                  "data-application-id": "",
+                  controls: "",
+                  id: "player"
+                }
+              })
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticStyle: {
+            position: "relative",
+            display: "block",
+            "max-width": "960px"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticStyle: { "padding-top": "2.25%", height: "200px" } },
+            [
+              _c("video", {
+                staticClass: "video-js",
+                staticStyle: {
+                  position: "absolute",
+                  inset: "0px",
+                  width: "100%",
+                  height: "100%"
+                },
+                attrs: {
+                  "data-video-id": "6023134167001",
+                  "data-account": "6022296345001",
+                  "data-player": "ExFAwNTvB",
+                  "data-embed": "default",
+                  "data-application-id": "",
+                  controls: "",
+                  id: "player"
+                }
+              })
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticStyle: {
+            position: "relative",
+            display: "block",
+            "max-width": "960px"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticStyle: { "padding-top": "2.25%", height: "200px" } },
+            [
+              _c("video", {
+                staticClass: "video-js",
+                staticStyle: {
+                  position: "absolute",
+                  inset: "0px",
+                  width: "100%",
+                  height: "100%"
+                },
+                attrs: {
+                  "data-video-id": "6023137329001",
+                  "data-account": "6022296345001",
+                  "data-player": "ExFAwNTvB",
+                  "data-embed": "default",
+                  "data-application-id": "",
+                  controls: "",
+                  id: "player"
+                }
+              })
+            ]
+          )
+        ]
+      )
+    ])
   }
 ]
 render._withStripped = true
