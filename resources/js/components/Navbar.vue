@@ -17,13 +17,22 @@
                     <a href="#" class="nav-link">Trending</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Events</a>
+                    <a href="#" class="nav-link">Links</a>
                 </li>
             </ul>
             </div>
-            <button class="search">
-                <i class="fas fa-search"></i>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#searchBar">
+                <span class="fa fa-search" aria-hidden="true"></span>
             </button>
+            <div class="collapse navbar-collapse" id="searchBar">
+            <div class="active-cyan-3 active-cyan-4 mb-4">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </div>
+            </div>
         </div>
     </nav>
 </template>
+
+<style scoped>
+
+</style>
