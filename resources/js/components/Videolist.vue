@@ -3,6 +3,7 @@
         <div v-for="(video, index) in videos">
 
             <div class="col myCol" style="position: relative; display: block; max-width: 960px;">
+                <h3> Sample Name </h3>
                 <div style="height: 200px; border: 1px solid black">
                     <a href="" :id="'link'+index" style="width: inherit; height: inherit">
                         <img style="width: inherit; height: inherit" src="" :id="'thumbnail'+index"/>
