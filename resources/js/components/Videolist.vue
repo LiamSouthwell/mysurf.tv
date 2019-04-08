@@ -1,19 +1,13 @@
 <template>
     <div>
-        <div v-for="video in videos">
+        <div v-for="(video, index) in videos">
 
             <div class="col myCol" style="position: relative; display: block; max-width: 960px;">
-                <div style="padding-top: 2.25%; height: 200px;">
-                <video data-video-id="6023123229001" 
-                data-account="6022296345001" 
-                data-player="ExFAwNTvB" 
-                data-embed="default" 
-                data-application-id 
-                class="video-js" 
-                controls 
-                style="position: absolute; inset: 0px; width: 100%; height: 100%;"
-                id="player">
-                </video>
+
+
+
+                <div style="height: 200px; border: 1px solid black">
+                    <img style="width: inherit; height: inherit" src="" :id="'thumbnail'+index"/>
                 </div>
             </div>
 
@@ -53,13 +47,15 @@
         methods:{
             loadThumbnails () {
                 axios
-            .get('/thumbnail')
-            .then(response => (
-                console.log(response.data.poster)
-                
+            .post('/thumbnail', {videos: this.videos})
+            .then((response => {
+                console.log(response.data)
+                response.data.forEach(function(videoInfo, index){
+                    document.getElementById("thumbnail"+index).src = videoInfo.poster;
+                });
 
-                
-                ));
+
+            }));
 
             },
         }

@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/thumbnail', 'VideoController@thumbnail');
+Route::post('/thumbnail', 'VideoController@thumbnail');
 Route::get('/searchvideo', 'VideoController@search');
 Route::get('/test', function () {
     return view('test');
