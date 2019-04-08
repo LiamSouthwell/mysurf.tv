@@ -9,18 +9,25 @@ class VideoController extends Controller
 {
     //
 
-    public function test(){
-    	$client = new Client();
-    	$res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/6022296345001/videos/6023123229001', [
-            'headers' => [
-                'BCOV-Policy' => 'BCpkADawqM2QNpRhEA926u-QG_ei9CPIY1y941jcI1U71ftdpcMpiOlzQ2rUPrBIyXiYxKaA8UM8yTapGq1wu1KfehOG6x7EzovzDd_v4w1UVfIMJlgIpNZTz8zVchFwepInsFKzbuHWUPKo',
-            ]
-        ]);
-    	echo $res->getStatusCode();
-        // 200
-        //echo $res->getHeader('content-type');
-        // 'application/json; charset=utf8'
-        echo $res->getBody();
+    public function thumbnail(Request $request){
+        $client = new Client();
+        $videoInfo = [];
+        foreach($request['videos'] as $videoID){
+            $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/6022296345001/videos/'.$videoID, [
+                'headers' => [
+                    'BCOV-Policy' => 'BCpkADawqM2QNpRhEA926u-QG_ei9CPIY1y941jcI1U71ftdpcMpiOlzQ2rUPrBIyXiYxKaA8UM8yTapGq1wu1KfehOG6x7EzovzDd_v4w1UVfIMJlgIpNZTz8zVchFwepInsFKzbuHWUPKo',
+                ]
+            ]);
+            if($res->getStatusCode() == 200){
+                array_push($videoInfo, json_decode($res->getBody()->getContents()));
+            }
+        }
+        return $videoInfo;
+    }
+
+
+    public function watch($videoID){
+        return view('test')->with('videoID', $videoID);
     }
 
 
@@ -48,10 +55,10 @@ class VideoController extends Controller
         //        'BCOV-Policy' => 'BCpkADawqM2QNpRhEA926u-QG_ei9CPIY1y941jcI1U71ftdpcMpiOlzQ2rUPrBIyXiYxKaA8UM8yTapGq1wu1KfehOG6x7EzovzDd_v4w1UVfIMJlgIpNZTz8zVchFwepInsFKzbuHWUPKo',
         //    ],
         //]);
-    	echo $res->getStatusCode();
+    	//echo $res->getStatusCode();
         // 200
         //echo $res->getHeader('content-type');
         // 'application/json; charset=utf8'
-        echo $res->getBody();
-    }
+        //echo $res->getBody();
+    //}
 }

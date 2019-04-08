@@ -1,10 +1,16 @@
 <template>
     <nav class="navbar navbar-expand-sm navbar-dark bg-info mb-2">
-        <div class="container">
+
             <a href="#" class="navbar-brand">Surfing Australia</a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#searchBar">
+                <span class="fa fa-search" aria-hidden="true"></span>
+            </button>
+
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -21,15 +27,14 @@
                 </li>
             </ul>
             </div>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#searchBar">
-                <span class="fa fa-search" aria-hidden="true"></span>
-            </button>
+
+
             <div class="collapse navbar-collapse" id="searchBar">
-            <div class="active-cyan-3 active-cyan-4 mb-4">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                <div class="active-cyan-3 active-cyan-4 mb-4">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                </div>
             </div>
-            </div>
-        </div>
+
     </nav>
 </template>
 

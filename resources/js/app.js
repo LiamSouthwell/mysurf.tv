@@ -29,7 +29,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('navbar', require('./components/Navbar.vue').default);
-Vue.component('videolist', require('./components/VideoList.vue').default);
+Vue.component('videolist', require('./components/Videolist.vue').default);
 
 const app = new Vue({
     el: '#app',

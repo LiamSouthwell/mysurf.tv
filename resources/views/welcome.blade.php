@@ -30,7 +30,7 @@
                     @endauth
                 </div>
             @endif -->
-        <div class="container">
+
             <div id="app">
                 <navbar></navbar>
                 <div class="row">  
@@ -39,7 +39,7 @@
                     <div>
                 </div>
             </div>
-        </div>
+
     </body>
     <script src="./js/app.js"></script>
     <script src="//players.brightcove.net/6022296345001/ExFAwNTvB_default/index.min.js"></script>
