@@ -3,11 +3,19 @@
         <div v-for="(video, index) in videos">
 
             <div class="col myCol" style="position: relative; display: block; max-width: 960px;">
-                <h3> Sample Name </h3>
                 <div style="height: 200px; border: 1px solid black">
                     <a href="" :id="'link'+index" style="width: inherit; height: inherit">
                         <img style="width: inherit; height: inherit" src="" :id="'thumbnail'+index"/>
                     </a>
+                    <div class="videoDetails" style="border: 1px solid black">
+                        <h3> Sample Name </h3>
+                        <h6> Video date | video duration </h6>
+                        <div class="addBtn">
+                            <button>
+                                <span class="fa fa-plus" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -24,7 +32,18 @@
 
     .myCol {
         padding-bottom: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 100px;
+    }
+
+    .addBtn {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 0;
+    }
+
+    .videoDetails{
+        text-align: center;
     }
 </style>
 
