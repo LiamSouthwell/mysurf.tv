@@ -40,7 +40,7 @@
 
             <div style="position: relative; display: block; max-width: 960px;">
                 <div style="padding-top: 56.25%;">
-                    <video data-video-id="6023123229001" 
+                    <video data-video-id="{{$videoID}}" 
                         data-account="6022296345001" 
                         data-player="ExFAwNTvB" 
                         data-embed="default" 
@@ -90,10 +90,10 @@
 
 
             //const response = await fetch('https://edge.api.brightcove.com/playback/v1/accounts/6022296345001');
-            const myJson = await response.json(); //extract JSON from the http response
+            //const myJson = await response.json(); //extract JSON from the http response
             // do something with myJson
-            console.log(myJson);
-            console.log(result);
+            //console.log(myJson);
+            //console.log(result);
             // expected output: 'resolved'
         }
 

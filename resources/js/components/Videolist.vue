@@ -3,11 +3,10 @@
         <div v-for="(video, index) in videos">
 
             <div class="col myCol" style="position: relative; display: block; max-width: 960px;">
-
-
-
                 <div style="height: 200px; border: 1px solid black">
-                    <img style="width: inherit; height: inherit" src="" :id="'thumbnail'+index"/>
+                    <a href="" :id="'link'+index" style="width: inherit; height: inherit">
+                        <img style="width: inherit; height: inherit" src="" :id="'thumbnail'+index"/>
+                    </a>
                 </div>
             </div>
 
@@ -39,10 +38,7 @@
         },
         mounted() {
             console.log('Video List Component mounted.')
-            
             this.loadThumbnails();
-
-
             },
         methods:{
             loadThumbnails () {
@@ -52,9 +48,9 @@
                 console.log(response.data)
                 response.data.forEach(function(videoInfo, index){
                     document.getElementById("thumbnail"+index).src = videoInfo.poster;
+                    document.getElementById("link"+index).href = 'watch/'+videoInfo.id;
+                    //WASIF - there is a lot of info for the video accessible here (title, playtime, tags etc), when fields are available as an overlay I will fill them out. Use console.log(videoInfo) to see what is available. Currently thumbnails also link to a separate page - this will change to single page app standards // 
                 });
-
-
             }));
 
             },

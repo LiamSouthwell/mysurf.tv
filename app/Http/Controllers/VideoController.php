@@ -23,12 +23,11 @@ class VideoController extends Controller
             }
         }
         return $videoInfo;
-
-        // 200
-        //echo $res->getHeader('content-type');
-        // 'application/json; charset=utf8'
+    }
 
 
+    public function watch($videoID){
+        return view('test')->with('videoID', $videoID);
     }
 
 
