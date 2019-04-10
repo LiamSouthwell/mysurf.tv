@@ -30,6 +30,13 @@ class VideoController extends Controller
         return view('test')->with('videoID', $videoID);
     }
 
+    public function search(Request $request){
+
+        //make brightcove search
+        dd($request['terms']);
+    }
+
+
 
 
 //    public function search(){

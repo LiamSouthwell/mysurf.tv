@@ -31,14 +31,37 @@
 
             <div class="collapse navbar-collapse" id="searchBar">
                 <div class="active-cyan-3 active-cyan-4">
-                    <input class="form-control search" type="text" placeholder="Search" aria-label="Search">
-                    <button class="searchbtn btn"> Go </button>
+                    <input id="searchTerms" class="form-control search" type="text" placeholder="Search" aria-label="Search">
+                    <button class="searchbtn btn" @click="search()"> Go </button>
                 </div>
             </div>
         
     </nav>
 </template>
+<script>
 
+module.exports = {
+    data: function () {
+        return {
+            data: 'hello',
+        }
+    },
+
+    methods: {
+    search: function() {
+      console.log("Hello?");
+
+        axios
+            .post('/search', {terms: document.getElementById("searchTerms").value})
+            .then((response => {
+                console.log(response.data)
+            }));
+    }
+  }
+}
+
+
+</script>
 <style scoped>
 h3{
     font-size: 18px;
