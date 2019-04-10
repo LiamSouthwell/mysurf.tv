@@ -31,7 +31,6 @@ class VideoController extends Controller
     }
 
     public function search(Request $request){
-
         //make brightcove search
         dd($request['terms']);
     }

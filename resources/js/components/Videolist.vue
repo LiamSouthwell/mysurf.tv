@@ -107,7 +107,13 @@
                     document.getElementById("link"+index).href = 'watch/'+videoInfo.id;
                     document.getElementById("title"+index).innerHTML = videoInfo.name;
                     document.getElementById("date"+index).innerHTML = videoInfo.created_at.substring(0, 10);
-                    document.getElementById("duration"+index).innerHTML = videoInfo.duration;
+                    var input = videoInfo.duration;
+                    input = Math.floor(input / 1000);
+                    var seconds = input % 60;
+                    input = Math.floor(input / 60);
+                    var minutes = input % 60;
+                    input = Math.floor(input / 60); 
+                    document.getElementById("duration"+index).innerHTML = minutes + ':' + seconds;
                     //WASIF - there is a lot of info for the video accessible here (title, playtime, tags etc), when fields are available as an overlay I will fill them out. Use console.log(videoInfo) to see what is available. Currently thumbnails also link to a separate page - this will change to single page app standards // 
                 });
             }));
