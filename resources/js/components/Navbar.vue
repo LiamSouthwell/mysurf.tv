@@ -8,7 +8,7 @@
             </button>
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-                <span class="navbar-toggler-icon"></span>
+                <span class="fa fa-bars"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarMenu">
@@ -72,6 +72,7 @@ h3{
 
  .navbar-toggler{
     color:rgb(45, 63, 81);
+    border: none;
  }
 #navbarMenu{
     color: rgb(43,63,81);

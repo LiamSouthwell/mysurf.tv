@@ -8,15 +8,14 @@
                     <a :href="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
                         <img style="width: inherit; height: inherit" :src="video.poster" :id="'thumbnail'+index"/>
                     </a>
-                    <div class="videoInfo">
+                    <div class="videoInfo" style="height: 40px;">
                         <div class="row">
                             <div class="videoSub" :id="'title'+index"> {{video.name}} </div>
                             <hr>
                         </div>
-                        <div class="row">
+                        <div class="row" >
                             <div class="videoSub half" :id="'date'+index"> {{video.published_at}}</div>
                             <div class="videoSub half text-right" :id="'duration'+index"> {{video.duration}} </div>
-                            <div style="height: 0;">&nbsp;</div>
                         </div>
                     </div>
                 </div>
@@ -31,6 +30,7 @@
     hr{
         margin-top: 0;
         margin-bottom: 0;
+        border-top: 1px solid rgba(0,0,0,.3);
     }
     .row{
         width: 95%;
@@ -58,6 +58,8 @@
         background-color: rgba(255,255,255,0.3);
         width: inherit;
         outline: 1px solid black;
+            overflow: hidden;
+    white-space: nowrap;
     }
 
     div {
@@ -68,7 +70,7 @@
 
     .myCol {
         padding-bottom: 10px;
-        margin-bottom: 55px;
+        margin-bottom: 40px;
     }
 
     .addBtn {
