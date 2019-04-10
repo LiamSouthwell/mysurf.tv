@@ -32,39 +32,74 @@ class VideoController extends Controller
 
     public function search(Request $request){
         //make brightcove search
-        dd($request['terms']);
+        //dd($request['terms']);
+
+        //get Policy Key
+        //  "key-data": {
+        //"account-id": "{account_id}"
+        //}
+        //"apis": ["search"]
+        $accessToken = $this->accessToken();
+
+        $body = json_encode([
+            'key-data' => [
+                'account-id' => '2728142626001',
+                'apis' => ['search'],
+            ],
+        ]);
+        
+        $client = new Client();
+        $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/videos?q=surfing', [
+                'headers' => [
+                    'BCOV-Policy' => 'BCpkADawqM2QNpRhEA926u-QG_ei9CPIY1y941jcI1U71ftdpcMpiOlzQ2rUPrBIyXiYxKaA8UM8yTapGq1wu1KfehOG6x7EzovzDd_v4w1UVfIMJlgIpNZTz8zVchFwepInsFKzbuHWUPKo',
+                ]
+            ]);
+        if($res->getStatusCode() != 200)
+            return $res->getStatusCode();
+        else
+            return json_decode($res->getBody()->getContents());
+
+
+        return $this->accessToken();
+
+
+
+
+        /* $client = new Client();
+        $res = $client->request('GET', 'https://policy.api.brightcove.com/v1/accounts/2728142626001/policy_keys', [
+                'headers' => [
+                    'Authorization' => 'Bearer {access_token}',
+                ]
+            ]);
+        --------------WHEN ACCESS TOKEN IS OBTAINABLE THEN CAN REQUEST POLICY KEY ----------------------------
+            */
     }
 
 
+    function accessToken(){
+        $client = new Client();
+        $res = $client->request('POST', 'https://oauth.brightcove.com/v4/access_token?grant_type=client_credentials', [
+                'headers' => [
+                    'Authorization' => 'Basic '.base64_encode(env('BRIGHTCOVE_CLIENT_ID').':'.env('BRIGHTCOVE_CLIENT_SECRET')),
+                    'Content-Type' => 'application/x-www-form-urlencoded'
+                ]
+            ]);
+        if($res->getStatusCode() != 200)
+            return $res->getStatusCode();
+        else
+            return json_decode($res->getBody()->getContents())->access_token;
+    }
 
+/* THIS IS CODE TO REQUEST A SEARCH-ENABLED POLICY KEY
+$client = new Client();
+        $res = $client->request('POST', 'https://policy.api.brightcove.com/v1/accounts/2728142626001/policy_keys', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $accessToken,
+                    'Content-Type' => 'application/json',
+                ],
+                'body' => $body,
+            ]);
+        dd(json_decode($res->getBody()->getContents()));
+*/
 
-//    public function search(){
-//    	$client = new Client();
-//    	$json = [
-//		    'key-data' => [
-//		        'account-id' => '6022296345001',
-//		        'apis' => ['search'],
-//		    ],
-//		];
-
-
-//   	$res = $client->request('GET', 'https://policy.api.brightcove.com/v1/accounts/6022296345001/policy_keys', [
-    		//ADD AUTHENTICATION IN HEADER @ https://support.brightcove.com/overview-policy-api#Search_videos HEADER SECTION    		
-//    		'headers' => [
-//                'Authorization' => 'Bearer {access_token}',
-//            ],
-//            'json' => $json,
-//        ]);
-
-    	//$res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/6022296345001/videos', [
-        //    'headers' => [
-        //        'BCOV-Policy' => 'BCpkADawqM2QNpRhEA926u-QG_ei9CPIY1y941jcI1U71ftdpcMpiOlzQ2rUPrBIyXiYxKaA8UM8yTapGq1wu1KfehOG6x7EzovzDd_v4w1UVfIMJlgIpNZTz8zVchFwepInsFKzbuHWUPKo',
-        //    ],
-        //]);
-    	//echo $res->getStatusCode();
-        // 200
-        //echo $res->getHeader('content-type');
-        // 'application/json; charset=utf8'
-        //echo $res->getBody();
-    //}
 }
