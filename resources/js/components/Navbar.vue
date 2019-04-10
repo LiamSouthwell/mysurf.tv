@@ -1,8 +1,8 @@
 <template>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-info mb-2">
-
-            <a href="#" class="navbar-brand">Surfing Australia</a>
-
+    <nav class="navbar navbar-expand-sm navbar-dark mb-2">
+        
+            <a href="#" class="navbar-brand"><img src="/images/mysurftvlogo.png" width="35" ></a>
+            <h3> Surfing Australia </h3>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#searchBar">
                 <span class="fa fa-search" aria-hidden="true"></span>
             </button>
@@ -30,14 +30,45 @@
 
 
             <div class="collapse navbar-collapse" id="searchBar">
-                <div class="active-cyan-3 active-cyan-4 mb-4">
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                <div class="active-cyan-3 active-cyan-4">
+                    <input class="form-control search" type="text" placeholder="Search" aria-label="Search">
+                    <button class="searchbtn btn"> Go </button>
                 </div>
             </div>
-
+        
     </nav>
 </template>
 
 <style scoped>
+h3{
+    font-size: 18px;
+    color: rgb(45, 63, 81);
+    margin: auto;
+    font-weight: 900;
+}
 
+ .navbar-toggler{
+    color:rgb(45, 63, 81);
+ }
+#navbarMenu{
+    color: rgb(43,63,81);
+}
+
+ .navbar{
+background-image: url('/images/mysurftvmainmenubg.png');
+ }
+
+.nav-link{
+    color: rgb(43,63,81) !important;
+    font-weight: 650;
+}
+.search{
+    width: 85%;
+    float: left;
+}
+.searchbtn{
+    margin-left: 5px;
+    background-color: rgb(43,63,81);
+    color: white;
+}
 </style>
