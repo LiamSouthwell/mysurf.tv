@@ -54,7 +54,7 @@ module.exports = {
         axios
             .post('/search', {terms: document.getElementById("searchTerms").value})
             .then((response => {
-                console.log(response.data)
+                window.location.href = "/watch/"+response.data.videos[0].id;
             }));
     }
   }
@@ -86,12 +86,13 @@ background-image: url('/images/mysurftvmainmenubg.png');
     font-weight: 650;
 }
 .search{
-    width: 85%;
+    width: 75%;
     float: left;
 }
 .searchbtn{
     margin-left: 5px;
     background-color: rgb(43,63,81);
     color: white;
+    width: 20%;
 }
 </style>

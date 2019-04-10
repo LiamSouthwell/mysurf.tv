@@ -5,17 +5,17 @@
 
             <div class="col myCol" style="position: relative; display: block; max-width: 960px;">
                 <div style="height: 200px; border: 1px solid black; border-bottom: none;" class="video">
-                    <a href="" :id="'link'+index" style="width: inherit; height: inherit">
-                        <img style="width: inherit; height: inherit" src="" :id="'thumbnail'+index"/>
+                    <a :href="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
+                        <img style="width: inherit; height: inherit" :src="video.poster" :id="'thumbnail'+index"/>
                     </a>
                     <div class="videoInfo">
                         <div class="row">
-                            <div class="videoSub" :id="'title'+index"> Title </div>
+                            <div class="videoSub" :id="'title'+index"> {{video.name}} </div>
                             <hr>
                         </div>
                         <div class="row">
-                            <div class="videoSub half" :id="'date'+index"> Date</div>
-                            <div class="videoSub half text-right" :id="'duration'+index"> Duration </div>
+                            <div class="videoSub half" :id="'date'+index"> {{video.published_at}}</div>
+                            <div class="videoSub half text-right" :id="'duration'+index"> {{video.duration}} </div>
                             <div style="height: 0;">&nbsp;</div>
                         </div>
                     </div>
@@ -89,35 +89,20 @@
     export default {
         data () {
             return {
-              videos: ['6023137329001', '6023134167001', '6023123229001'] 
+              videos: 0
             }
         },
         mounted() {
             console.log('Video List Component mounted.')
             this.loadThumbnails();
-            },
+        },
         methods:{
             loadThumbnails () {
-                axios
-            .post('/thumbnail', {videos: this.videos})
-            .then((response => {
-                console.log(response.data)
-                response.data.forEach(function(videoInfo, index){
-                    document.getElementById("thumbnail"+index).src = videoInfo.poster;
-                    document.getElementById("link"+index).href = 'watch/'+videoInfo.id;
-                    document.getElementById("title"+index).innerHTML = videoInfo.name;
-                    document.getElementById("date"+index).innerHTML = videoInfo.created_at.substring(0, 10);
-                    var input = videoInfo.duration;
-                    input = Math.floor(input / 1000);
-                    var seconds = input % 60;
-                    input = Math.floor(input / 60);
-                    var minutes = input % 60;
-                    input = Math.floor(input / 60); 
-                    document.getElementById("duration"+index).innerHTML = minutes + ':' + seconds;
-                    //WASIF - there is a lot of info for the video accessible here (title, playtime, tags etc), when fields are available as an overlay I will fill them out. Use console.log(videoInfo) to see what is available. Currently thumbnails also link to a separate page - this will change to single page app standards // 
-                });
-            }));
-
+                    axios
+                .post('/search', {terms: "surfing"})
+                .then((response => {
+                    this.videos = response.data.videos;
+                }));
             },
         }
     }

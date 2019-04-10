@@ -31,14 +31,6 @@ class VideoController extends Controller
     }
 
     public function search(Request $request){
-        //make brightcove search
-        //dd($request['terms']);
-
-        //get Policy Key
-        //  "key-data": {
-        //"account-id": "{account_id}"
-        //}
-        //"apis": ["search"]
         $accessToken = $this->accessToken();
 
         $body = json_encode([
@@ -49,18 +41,16 @@ class VideoController extends Controller
         ]);
         
         $client = new Client();
-        $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/videos?q=surfing', [
+        $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/videos?q='.$request['terms'], [
                 'headers' => [
-                    'BCOV-Policy' => 'BCpkADawqM2QNpRhEA926u-QG_ei9CPIY1y941jcI1U71ftdpcMpiOlzQ2rUPrBIyXiYxKaA8UM8yTapGq1wu1KfehOG6x7EzovzDd_v4w1UVfIMJlgIpNZTz8zVchFwepInsFKzbuHWUPKo',
+                    'BCOV-Policy' => env('BRIGHTCOVE_POLICY_KEY'),
                 ]
             ]);
         if($res->getStatusCode() != 200)
             return $res->getStatusCode();
         else
-            return json_decode($res->getBody()->getContents());
+            return $res->getBody()->getContents();
 
-
-        return $this->accessToken();
 
 
 

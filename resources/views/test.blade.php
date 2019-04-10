@@ -34,15 +34,15 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Laravel <button onclick="changeVideo()" style="visibility: hidden">Change Video</button>
+                <h4> If you've come here from a search, this was the first returned result. </h4> <button onclick="changeVideo()" style="visibility: hidden">Change Video</button>
                 <navbar></navbar>
             </div>
 
             <div style="position: relative; display: block; max-width: 960px;">
                 <div style="padding-top: 56.25%;">
                     <video data-video-id="{{$videoID}}" 
-                        data-account="6022296345001" 
-                        data-player="ExFAwNTvB" 
+                        data-account="2728142626001" 
+                        data-player="BJrkAHssG" 
                         data-embed="default" 
                         data-application-id 
                         class="video-js" 
@@ -62,7 +62,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
        <script src="./js/app.js"></script>
     </body>
-<script src="//players.brightcove.net/6022296345001/ExFAwNTvB_default/index.min.js"></script>
+<script src="//players.brightcove.net/2728142626001/BJrkAHssG_default/index.min.js"></script>
 <script>
         var myPlayer;
         videojs.getPlayer('player').on('loadedmetadata', function() {
