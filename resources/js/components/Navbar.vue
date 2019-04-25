@@ -1,8 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-sm navbar-dark mb-2">
         
-            <a href="#" class="navbar-brand"><img src="/images/mysurftvlogo.png" width="35" ></a>
-            <h3> Surfing Australia </h3>
+            <a href="#" class="navbar-brand"><img id="logo" src="/images/mysurftvlogo.png" width="50" height="50" ></a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#searchBar">
                 <span class="fa fa-search" aria-hidden="true"></span>
             </button>
@@ -31,7 +30,7 @@
 
             <div class="collapse navbar-collapse" id="searchBar">
                 <div class="active-cyan-3 active-cyan-4">
-                    <input id="searchTerms" class="form-control search" type="text" placeholder="Search" aria-label="Search">
+                    <input id="searchTerms" class="form-control search" type="text" placeholder="What are you looking for?" aria-label="Search">
                     <button class="searchbtn btn" @click="search()"> Go </button>
                 </div>
             </div>
@@ -65,35 +64,63 @@ module.exports = {
 <style scoped>
 h3{
     font-size: 18px;
-    color: rgb(45, 63, 81);
+    color: white;
     margin: auto;
     font-weight: 900;
 }
 
  .navbar-toggler{
-    color:rgb(45, 63, 81);
+    color: white;
     border: none;
  }
+
 #navbarMenu{
-    color: rgb(43,63,81);
+    color: white;
 }
 
- .navbar{
+.navbar{
 background-image: url('/images/mysurftvmainmenubg.png');
  }
 
+.navbar-nav {
+    text-align: right;
+}
+
 .nav-link{
-    color: rgb(43,63,81) !important;
+    color: white !important;
     font-weight: 650;
 }
+
 .search{
-    width: 75%;
+    width: 78%;
     float: left;
 }
+
 .searchbtn{
-    margin-left: 5px;
+    margin-left: 2px;
     background-color: rgb(43,63,81);
     color: white;
     width: 20%;
 }
+#searchTerms {
+    background-color: #dddddd;
+    color: white;
+}
+ 
+ @media only screen and (min-width: 600px) {
+    #searchBar {
+    position: absolute;
+    right: 5px;
+    }
+
+    #searchTerms {
+        font-size: 12px;
+    }
+
+    #logo {
+        width: 70px;
+        height: 70px;
+    }
+ }
+
 </style>

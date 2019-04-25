@@ -1,13 +1,14 @@
 
 <template>
     <div>
-        <div v-for="(video, index) in videos">
-
-            <div class="col myCol" style="position: relative; display: block; max-width: 960px;">
-                <div style="height: 200px; border: 1px solid black; border-bottom: none;" class="video">
+        <div class="videoList" v-for="(video, index) in videos">
+            <div class="row vids">
+            <div class="col myCol" style="display: block;">
+                <div style="height: 240px; border: 1px solid black; border-bottom: none;" class="video">
                     <a :href="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
                         <img style="width: inherit; height: inherit" :src="video.poster" :id="'thumbnail'+index"/>
                     </a>
+            </div>
                     <div class="videoInfo" style="height: 40px;">
                         <div class="row">
                             <div class="videoSub" :id="'title'+index"> {{video.name}} </div>
@@ -36,9 +37,7 @@
         width: 95%;
         margin: auto;
     }
-    .video{
 
-    }
     .half{
         width: 50%;
         float: left;
@@ -53,13 +52,14 @@
         padding: 0;
         margin: 0;
         font-size: 12px;
+        font-weight: bold;
     }
     .videoInfo{
         background-color: rgba(255,255,255,0.3);
         width: inherit;
         outline: 1px solid black;
-            overflow: hidden;
-    white-space: nowrap;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
     div {
@@ -69,8 +69,9 @@
     }
 
     .myCol {
+        height: 280px;
         padding-bottom: 10px;
-        margin-bottom: 40px;
+        margin-bottom: 25px;
     }
 
     .addBtn {
@@ -83,6 +84,14 @@
     .videoDetails{
         text-align: center;
     }
+
+    @media only screen and (min-width: 600px) {
+        .vids {
+            display: inline-flex;
+            padding: 10px;
+        }
+    }
+    
 </style>
 
 <script>
