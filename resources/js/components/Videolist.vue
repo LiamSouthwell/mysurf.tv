@@ -1,65 +1,64 @@
 
 <template>
     <div>
-        <div class="videoList" v-for="(video, index) in videos">
+        <div class="col-lg-4 videoList" v-for="(video, index) in videos">
             <div class="row vids">
-            <div class="col myCol" style="display: block;">
-                <div style="height: 240px; border: 1px solid black; border-bottom: none;" class="video">
+            <div class="col myCol">
+                <div style="height: 240px; width: 300px; border: 1px solid black; border-bottom: none;" class="video">
                     <a :href="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
                         <img style="width: inherit; height: inherit" :src="video.poster" :id="'thumbnail'+index"/>
                     </a>
             </div>
-                    <div class="videoInfo" style="height: 40px;">
-                        <div class="row">
-                            <div class="videoSub" :id="'title'+index"> {{video.name}} </div>
-                            <hr>
-                        </div>
-                        <div class="row" >
-                            <div class="videoSub half" :id="'date'+index"> {{video.published_at}}</div>
-                            <div class="videoSub half text-right" :id="'duration'+index"> {{video.duration}} </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="videoInfo">
+                <div class="videoSub" :id="'title'+index"> {{video.name}} </div>
+                <hr>
+                <div class="videoSub half" :id="'date'+index"> {{video.published_at}}</div>
+                <div class="videoSub half text-right" :id="'duration'+index"> {{((video.duration/1000)/60).toFixed(0)}}:{{((video.duration/1000)%60).toFixed(0)}} </div>
             </div>
-
+            </div>
+            </div>
         </div>
     </div>  
 </template>
 
 <style scoped>
+
+    .videoList {
+        float: left;
+    }
+
     hr{
         margin-top: 0;
         margin-bottom: 0;
         border-top: 1px solid rgba(0,0,0,.3);
     }
+    
     .row{
         width: 95%;
         margin: auto;
     }
 
-    .half{
-        width: 50%;
-        float: left;
-
-    }
-
     .text-right{
         text-align: right;
+        margin-right: 5px;
+        width: 20%;
+        float: right;
     }
 
     .videoSub{
         padding: 0;
-        margin: 0;
-        font-size: 12px;
+        margin-left: 5px;
+        font-size: 11px;
         font-weight: bold;
     }
+
     .videoInfo{
         background-color: rgba(255,255,255,0.3);
-        width: inherit;
+        width: 300px;
+        height: 65px;
         outline: 1px solid black;
         overflow: hidden;
-        white-space: nowrap;
+        word-wrap: break-word;
     }
 
     div {
@@ -71,7 +70,7 @@
     .myCol {
         height: 280px;
         padding-bottom: 10px;
-        margin-bottom: 25px;
+        margin-bottom: 40px;
     }
 
     .addBtn {
@@ -85,10 +84,14 @@
         text-align: center;
     }
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 900px) {
+        .container {
+            align-content: flex-start;
+        }
+
         .vids {
-            display: inline-flex;
-            padding: 10px;
+            display: flex;
+            flex-flow: row wrap;
         }
     }
     

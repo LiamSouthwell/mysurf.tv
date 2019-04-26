@@ -34,7 +34,7 @@
             <div id="app" style="background-color: #dddddd">
                 <navbar></navbar>
                 <div class="row">  
-                    <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="container">
                         <h4 style="text-align: center;">Top picks for you</h4>
                         <videolist></videolist>
                     <div>

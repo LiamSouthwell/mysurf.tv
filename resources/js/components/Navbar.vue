@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-sm navbar-dark mb-2">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-2">
         
             <a href="#" class="navbar-brand"><img id="logo" src="/images/mysurftvlogo.png" width="50" height="50" ></a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#searchBar">
@@ -62,6 +62,7 @@ module.exports = {
 
 </script>
 <style scoped>
+
 h3{
     font-size: 18px;
     color: white;
@@ -69,7 +70,7 @@ h3{
     font-weight: 900;
 }
 
- .navbar-toggler{
+.navbar-toggler{
     color: white;
     border: none;
  }
@@ -79,8 +80,10 @@ h3{
 }
 
 .navbar{
-background-image: url('/images/mysurftvmainmenubg.png');
- }
+    background-image: url('/images/mysurftvmainmenubg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 .navbar-nav {
     text-align: right;
@@ -102,6 +105,7 @@ background-image: url('/images/mysurftvmainmenubg.png');
     color: white;
     width: 20%;
 }
+
 #searchTerms {
     background-color: #dddddd;
     color: white;
