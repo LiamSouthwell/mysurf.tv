@@ -24,3 +24,7 @@ Route::get('/test', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/playlists', 'PlaylistController@index');
+Route::get('/playlists/create', 'PlaylistController@create');
+Route::post('/playlists/store', 'PlaylistController@store');
