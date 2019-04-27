@@ -9,6 +9,10 @@ use App\Playlist;
 class VideoController extends Controller
 {
     //
+    public function index(){
+        $playlists = Playlist::all();
+        return view('welcome')->with('playlists', $playlists);
+    }
 
     public function thumbnail(Request $request){
         $client = new Client();
@@ -79,6 +83,27 @@ class VideoController extends Controller
 
         return $playlistsforview;       
     }
+
+
+    public function searchPlaylist(Request $request){
+        $accessToken = $this->accessToken();
+
+        $client = new Client(); 
+
+        $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/playlists/'.$request[0], [
+                'headers' => [
+                    'BCOV-Policy' => env('BRIGHTCOVE_POLICY_KEY'),
+                ]
+            ]);
+
+        if($res->getStatusCode() != 200)
+            dd("Something went wrong");
+        else
+            return $res->getBody()->getContents();
+
+  
+    }
+
 
     function accessToken(){
         $client = new Client();

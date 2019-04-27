@@ -32,6 +32,7 @@ Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('videolist', require('./components/Videolist.vue').default);
 Vue.component('watchvideo', require('./components/Watchvideo.vue').default);
 Vue.component('carousel', require('./components/Carousel.vue').default);
+Vue.component('thumbnail', require('./components/Thumbnail.vue').default);
 
 const app = new Vue({
     el: '#app',

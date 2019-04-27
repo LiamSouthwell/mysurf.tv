@@ -33,10 +33,12 @@
 
             <div id="app" style="background-color: #dddddd">
                 <navbar></navbar>
-                <carousel></carousel>
+                @foreach($playlists as $playlist)
+                    <carousel playlistid="{{$playlist->playlistid}}" name="{{$playlist->name}}"></carousel>
+                @endforeach
                 <div class="container">
                     <h4 style="text-align: center;">Top picks for you</h4>
-                    <watchvideo></watchvideo>
+                    <watchvideo ></watchvideo>
                     <videolist></videolist>
                 <div>
                 <div id="footer">
