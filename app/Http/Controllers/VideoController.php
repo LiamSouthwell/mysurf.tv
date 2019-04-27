@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use App\Playlist;
 
 class VideoController extends Controller
 {
@@ -15,7 +16,7 @@ class VideoController extends Controller
         foreach($request['videos'] as $videoID){
             $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/6022296345001/videos/'.$videoID, [
                 'headers' => [
-                    'BCOV-Policy' => 'BCpkADawqM2QNpRhEA926u-QG_ei9CPIY1y941jcI1U71ftdpcMpiOlzQ2rUPrBIyXiYxKaA8UM8yTapGq1wu1KfehOG6x7EzovzDd_v4w1UVfIMJlgIpNZTz8zVchFwepInsFKzbuHWUPKo',
+                    'BCOV-Policy' => env('BRIGHTCOVE_POLICY_KEY'),
                 ]
             ]);
             if($res->getStatusCode() == 200){
@@ -26,9 +27,11 @@ class VideoController extends Controller
     }
 
 
+
     public function watch($videoID){
         return view('test')->with('videoID', $videoID);
     }
+
 
     public function search(Request $request){
         $accessToken = $this->accessToken();
@@ -50,21 +53,32 @@ class VideoController extends Controller
             return $res->getStatusCode();
         else
             return $res->getBody()->getContents();
-
-
-
-
-
-        /* $client = new Client();
-        $res = $client->request('GET', 'https://policy.api.brightcove.com/v1/accounts/2728142626001/policy_keys', [
-                'headers' => [
-                    'Authorization' => 'Bearer {access_token}',
-                ]
-            ]);
-        --------------WHEN ACCESS TOKEN IS OBTAINABLE THEN CAN REQUEST POLICY KEY ----------------------------
-            */
     }
 
+
+    public function searchPlaylists(){
+        $playlists = Playlist::orderBy('order', 'asc')->get();
+        $playlistsforview = [];
+
+        $accessToken = $this->accessToken();
+
+        $client = new Client(); 
+        foreach($playlists as $playlist){
+
+        $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/playlists/'.$playlist->playlistid, [
+                'headers' => [
+                    'BCOV-Policy' => env('BRIGHTCOVE_POLICY_KEY'),
+                ]
+            ]);
+
+        if($res->getStatusCode() != 200)
+            dd("Something went wrong");
+        else
+            array_push($playlistsforview, ['displayname'=> $playlist->name, 'playlist'=>json_decode($res->getBody()->getContents())]);
+        }
+
+        return $playlistsforview;       
+    }
 
     function accessToken(){
         $client = new Client();
@@ -79,6 +93,7 @@ class VideoController extends Controller
         else
             return json_decode($res->getBody()->getContents())->access_token;
     }
+
 
 /* THIS IS CODE TO REQUEST A SEARCH-ENABLED POLICY KEY
 $client = new Client();
