@@ -28,3 +28,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/playlists', 'PlaylistController@index');
 Route::get('/playlists/create', 'PlaylistController@create');
 Route::post('/playlists/store', 'PlaylistController@store');
+Route::get('/playlists/edit/{id}', 'PlaylistController@edit');
+Route::get('/playlists/update/{id}', 'PlaylistController@update');
+Route::get('/playlists/delete/{id}', 'PlaylistController@delete');

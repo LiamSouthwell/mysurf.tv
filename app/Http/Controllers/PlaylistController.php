@@ -27,4 +27,20 @@ class Playlistcontroller extends Controller
     	$playlist->save();
     	return redirect('/playlists');
     }
+
+    public function edit($id){
+    	$playlist = Playlist::find($id);
+    	return view('playlists.edit')->with('playlist', $playlist);
+    }
+
+    public function update($id){
+    	$playlist = Playlist::find($id);
+    	return view('playlists.edit')->with('playlist', $playlist);
+    }    
+
+    public function delete($id){
+    	$playlist = Playlist::find($id);
+    	$playlist->delete();
+    	return redirect('/playlists');
+    }
 }
