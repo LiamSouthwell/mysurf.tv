@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
+
+            <div class="card col-md-12">
                 <table class="table">
                   <thead>
                     <tr>
@@ -12,6 +12,7 @@
                       <th scope="col">Name</th>
                       <th scope="col">Brightcove ID</th>
                       <th scope="col">Order</th>
+                      <th> </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -26,36 +27,12 @@
                                   <span aria-hidden="true" style="color:red">&times;</span>
                                 </button></td>
                             </tr>
-<!-- Modal for confirming delete -->
-<div class="modal fade" id="deleteModal{{$playlist->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Deleting this playlist cannot be undone. <br>
-        <strong>Note:</strong> This will only delete the playlist from the mysurf.tv platform & not Brightcove.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="/playlists/delete/{{$playlist->id}}" class="btn btn-danger">DELETE</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
                     @endforeach
                   </tbody>
                 </table>
             </div>
-        </div>
+            <a href="/playlists/create" class="btn btn-success col-md-12"  style="margin-top: 10px;">New Playlist</a>
+
     </div>
 </div>
 @endsection

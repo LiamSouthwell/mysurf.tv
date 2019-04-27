@@ -16,6 +16,11 @@
                     <input type="text" class="form-control" name="playlistid" id="playlistid" placeholder="ID of Playlist">
                     <small  class="form-text text-muted">Copy & Paste the ID provided by Brightcove. </small>
                   </div>
+                  <div class="form-group">
+                    <label for="order">Order No</label>
+                    <input type="text" class="form-control" name="order" id="order" placeholder="Priority">
+                    <small  class="form-text text-muted">The priority of the playlist when viewing the homepage. </small>
+                  </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 

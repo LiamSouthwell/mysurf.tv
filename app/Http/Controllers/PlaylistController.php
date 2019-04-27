@@ -33,9 +33,13 @@ class Playlistcontroller extends Controller
     	return view('playlists.edit')->with('playlist', $playlist);
     }
 
-    public function update($id){
+    public function update($id, Request $request){
     	$playlist = Playlist::find($id);
-    	return view('playlists.edit')->with('playlist', $playlist);
+    	$playlist->name = $request->name;
+    	$playlist->playlistid = $request->playlistid;
+    	$playlist->order=$request->order;
+    	$playlist->save();
+    	return redirect('/playlists');
     }    
 
     public function delete($id){

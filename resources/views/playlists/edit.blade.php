@@ -16,9 +16,14 @@
                     <input type="text" class="form-control" name="playlistid" id="playlistid" value="{{$playlist->playlistid}}">
                     <small  class="form-text text-muted">Copy & Paste the ID provided by Brightcove. </small>
                   </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                  <div class="form-group">
+                    <label for="order">Order No</label>
+                    <input type="text" class="form-control" name="order" id="order" value="{{$playlist->order}}">
+                    <small  class="form-text text-muted">The priority of the playlist when viewing the homepage. </small>
+                  </div>
 
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </form>
         </div>
     </div>
 </div>
