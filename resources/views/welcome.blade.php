@@ -33,12 +33,12 @@
 
             <div id="app" style="background-color: #dddddd">
                 <navbar></navbar>
-                <div class="row">  
-                    <div class="container">
-                        <h4 style="text-align: center;">Top picks for you</h4>
-                        <videolist></videolist>
-                    <div>
-                </div>
+                <carousel></carousel>
+                <div class="container">
+                    <h4 style="text-align: center;">Top picks for you</h4>
+                    <watchvideo></watchvideo>
+                    <videolist></videolist>
+                <div>
                 <div id="footer">
                     <div>
                         <a href="https://www.facebook.com/surfingaustraliainc/">
