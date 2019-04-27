@@ -11,7 +11,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="./sass/mysurf.css" rel="stylesheet">
+        <link href="./sass/app.scss" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
@@ -31,13 +31,14 @@
                 </div>
             @endif -->
 
-            <div id="app">
+            <div id="app" style="background-color: #dddddd">
                 <navbar></navbar>
-                <div class="row">  
-                    <div class="col-sm-12 col-md-4">
-                        <videolist></videolist>
-                    <div>
-                </div>
+                <carousel></carousel>
+                <div class="container">
+                    <h4 style="text-align: center;">Top picks for you</h4>
+                    <watchvideo></watchvideo>
+                    <videolist></videolist>
+                <div>
                 <div id="footer">
                     <div>
                         <a href="https://www.facebook.com/surfingaustraliainc/">
