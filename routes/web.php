@@ -17,6 +17,10 @@ Route::get('/', function () {
 Route::post('/thumbnail', 'VideoController@thumbnail');
 Route::get('/watch/{videoID}', 'VideoController@watch');
 Route::post('/search', 'VideoController@search');
+
+Route::get('/searchPlaylists', 'VideoController@searchPlaylists');
+
+
 Route::get('/test', function () {
     return view('test');
 });

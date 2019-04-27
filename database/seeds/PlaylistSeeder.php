@@ -14,14 +14,14 @@ class PlaylistSeeder extends Seeder
     public function run()
     {
          DB::table('playlists')->insert([
-         	'name' => 'Test',
-            'playlistid' => 'thisisaplaylistid',
+         	'name' => 'nudie SurfGroms',
+            'playlistid' => '5762486047001',
             'order' => 1,
          ]);
 
          DB::table('playlists')->insert([
-         	'name' => 'Test2',
-            'playlistid' => 'thisisaplaylistid2',
+         	'name' => 'The Hold Down TV Series',
+            'playlistid' => '5762486045001',
             'order' => 2,
          ]);
     }
