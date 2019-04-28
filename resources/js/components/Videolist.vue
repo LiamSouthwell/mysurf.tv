@@ -8,9 +8,9 @@
             <div class="row vids">
             <div class="col myCol">
                 <div style="height: 240px; width: 300px; border: 1px solid black; border-bottom: none;" class="video">
-                    <a :href="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
+                    <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
                         <img style="width: inherit; height: inherit" :src="video.poster" :id="'thumbnail'+index"/>
-                    </a>
+                    </router-link>
             </div>
             <div class="videoInfo">
                 <div class="videoSub" :id="'title'+index"> {{video.name}} </div>

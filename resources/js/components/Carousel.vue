@@ -6,7 +6,9 @@
             <button id="leftBtn"><span class="fa fa-chevron-left"></span></button>
             <div class="scrolling-wrapper">
                 <div v-for="video in playlist.playlist.videos" class="card">
-                    <thumbnail  :title="video.name" :thumbnail="video.poster" :duration="video.duration" :created_at="video.created_at"> </thumbnail>
+                    <router-link :to="'/watch/'+video.id" >
+                        <thumbnail  :title="video.name" :thumbnail="video.poster" :duration="video.duration" :created_at="video.created_at"> </thumbnail>
+                    </router-link>
                 </div>
             </div>
             <button id="rightBtn"><span class="fa fa-chevron-right"></span></button>
