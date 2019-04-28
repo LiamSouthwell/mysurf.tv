@@ -37,15 +37,38 @@ export default {
         },
         watch:{
             $route (to, from){
+            	brightcovePlayerLoader.reset();
                 this.videoID = this.$route.params.id;
-            }
-        },
-        mounted() {	
-        	brightcovePlayerLoader({
+            brightcovePlayerLoader({
 			  refNode: document.getElementById('#player-container'),
 			  accountId: '2728142626001',
 			  playerId: 'BJrkAHssG',
-			  videoId: '5986584291001'
+			  videoId: this.$route.params.id
+			})
+			  .then(function(success) {
+			      var myPlayer = success.ref;
+			      console.log('success', success);
+			      myPlayer.on('loadedmetadata',function(){
+			        myPlayer.muted(true);
+			        myPlayer.play();
+			      });
+			  })
+			  .catch(function(error) {
+			  	console.log("ERROR");
+			  	console.log(error);
+			    // Player creation failed!
+			  });
+
+
+            }
+        },
+        mounted() {	
+
+            brightcovePlayerLoader({
+			  refNode: document.getElementById('#player-container'),
+			  accountId: '2728142626001',
+			  playerId: 'BJrkAHssG',
+			  videoId: this.$route.params.id
 			})
 			  .then(function(success) {
 			      var myPlayer = success.ref;
