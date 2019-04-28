@@ -11,10 +11,9 @@
                     <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
                         <img style="width: inherit; height: inherit" :src="video.poster" :id="'thumbnail'+index"/>
                     </router-link>
+                <div class="title" style="width: inherit;"><h4>{{video.name}}</h4></div>
             </div>
             <div class="videoInfo">
-                <div class="videoSub" :id="'title'+index"> {{video.name}} </div>
-                <hr>
                 <div class="videoSub half" :id="'date'+index"> {{video.published_at}}</div>
                 <div class="videoSub half text-right" :id="'duration'+index"> {{((video.duration/1000)/60).toFixed(0)}}:{{((video.duration/1000)%60).toFixed(0)}} </div>
             </div>
@@ -64,6 +63,22 @@
         overflow: hidden;
         word-wrap: break-word;
     }
+      .title {
+      text-align: center;
+      width: 100%;
+      color: white;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      margin: auto;
+      transform: scaleY(0);
+      transition: transform .3s;
+  }
+
+    .myCol:hover .title {
+    transform: scaleY(1);
+    background: rgba(255, 0, 0, 0.6);
+  }
 
     div {
         width: 100%;

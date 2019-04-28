@@ -1,9 +1,10 @@
 
 <template>
-
+    <div id="thumbs"
         <img :src="this.thumbnail" width="350" height="190"></img>
-
+    </div>
 </template>
+
 <script>
 export default {
     props: ['thumbnail', 'duration', 'created_at', 'title'],
@@ -13,5 +14,8 @@ export default {
 <style scoped>
     img {
         border: solid black 2px;
+    }
+    #thumbs:hover > img {
+        background: rgba(255, 0, 0, 0.6);
     }
 </style>
