@@ -1,7 +1,7 @@
 
 <template>
 	<div class="embed-responsive embed-responsive-16by9">
-		<div id="#theDiv"> </div>
+		<div id="#player-container" class="videoplayer"> </div>
 		   <!--<video :data-video-id="5986584291001" 
 		        data-account="2728142626001" 
 		        data-player="BJrkAHssG" 
@@ -22,9 +22,14 @@
 </style>
 
 <script>
+import brightcovePlayerLoader from '@brightcove/player-loader';
+
+
+
 
 export default {
         
+
         data () {
             return {
             	videoID: 0
@@ -32,19 +37,39 @@ export default {
         },
         watch:{
             $route (to, from){
-            	console.log(this.$route.params);
                 this.videoID = this.$route.params.id;
             }
         },
         mounted() {	
-        	this.$brightcovePlayerLoader();
+        	brightcovePlayerLoader({
+			  refNode: document.getElementById('#player-container'),
+			  accountId: '2728142626001',
+			  playerId: 'BJrkAHssG',
+			  videoId: '5986584291001'
+			})
+			  .then(function(success) {
+			      var myPlayer = success.ref;
+			      console.log('success', success);
+			      myPlayer.on('loadedmetadata',function(){
+			        myPlayer.muted(true);
+			        myPlayer.play();
+			      });
+			  })
+			  .catch(function(error) {
+			  	console.log("ERROR");
+			  	console.log(error);
+			    // Player creation failed!
+			  });
 
-        	console.log("VIDEO WATCH");
+        	console.log	("VIDEO WATCH");
         	this.videoID = this.$route.params.id;
         },
         methods:{}
 
 }
+
+
+
 </script>
 
 <style scoped>
@@ -61,3 +86,9 @@ export default {
 }
 
 </style>
+<style>
+.video-js.vjs-quality-menu{
+	width: 100%;
+	height: 100%;
+}
+	</style>

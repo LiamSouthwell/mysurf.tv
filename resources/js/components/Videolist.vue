@@ -112,8 +112,6 @@
             }
         },
         mounted() {
-            console.log(this.terms);
-            console.log('Video List Component mounted.')
             this.loadThumbnails();
         },
         watch:{

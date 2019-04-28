@@ -8,7 +8,6 @@
 require('./bootstrap');
 
 import VueRouter from 'vue-router';
-import brightcovePlayerLoader from '@brightcove/player-loader';
 
 
 import watchvideo from './components/Watchvideo.vue';
@@ -19,7 +18,6 @@ import carousel from './components/Carousel.vue';
 
 window.Vue = require('vue');
 Vue.use(VueRouter);
-Vue.use(brightcovePlayerLoader);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -26,8 +26,6 @@ export default {
     },
 
     mounted: function () {
-
-        console.log("mounted");
             axios
         .get('/searchPlaylists')
         .then((response => {
