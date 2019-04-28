@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        This is the watchvideo component
+        <h4>This is the watchvideo component</h4>
     </div>  
 </template>
 

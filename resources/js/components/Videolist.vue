@@ -1,7 +1,10 @@
 
 <template>
     <div>
-        <div class="col-lg-4 videoList" v-for="(video, index) in videos">
+        <div v-if="this.loading">
+            <loader> </loader>
+        </div>
+        <div v-else class="col-lg-4 videoList" v-for="(video, index) in videos">
             <div class="row vids">
             <div class="col myCol">
                 <div style="height: 240px; width: 300px; border: 1px solid black; border-bottom: none;" class="video">
@@ -18,6 +21,7 @@
             </div>
             </div>
         </div>
+
     </div>  
 </template>
 
@@ -94,26 +98,42 @@
             flex-flow: row wrap;
         }
     }
-    
+
 </style>
 
 <script>
     export default {
+        
         data () {
             return {
-              videos: 0
+            terms: "",
+            videos: 0,
+            loading: true
             }
         },
         mounted() {
+            console.log(this.terms);
             console.log('Video List Component mounted.')
             this.loadThumbnails();
         },
+        watch:{
+            $route (to, from){
+                this.terms = this.$route.params.terms;
+                this.loadThumbnails();
+            }
+        },
         methods:{
             loadThumbnails () {
+                this.loading = true;
+                if(this.terms == ""){
+                    this.terms = "surfing";
+                }
+
                     axios
-                .post('/search', {terms: "surfing"})
+                .post('/search', {terms: this.terms})
                 .then((response => {
                     this.videos = response.data.videos;
+                    this.loading = false;
                 }));
             },
         }

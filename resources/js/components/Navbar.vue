@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Playlists</a>
+                    <router-link to="/"><p class="nav-link">Playlists</p> </router-link>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">Latest</a>
@@ -48,13 +48,7 @@ module.exports = {
 
     methods: {
     search: function() {
-      console.log("Hello?");
-
-        axios
-            .post('/search', {terms: document.getElementById("searchTerms").value})
-            .then((response => {
-                window.location.href = "/watch/"+response.data.videos[0].id;
-            }));
+      this.$router.push({path: '/search/' + document.getElementById("searchTerms").value})
     }
   }
 }

@@ -1,34 +1,35 @@
 
 <template>
-    <div id="carousel" data-options="mode: carousel; height: 210px;">
-    <p id="header">{{this.name}}</p>
-        <button id="leftBtn"><span class="fa fa-chevron-left"></span></button>
-        <div class="scrolling-wrapper">
-            <div v-for="video in videos" class="card">
-                <thumbnail  :title="video.name" :thumbnail="video.thumbnail" :duration="video.duration" :created_at="video.created_at"> </thumbnail>
+    <div>
+        <div v-for="playlist in playlists" id="carousel" data-options="mode: carousel; height: 210px;">
+        <p id="header">{{playlist.displayname}}</p>
+            <button id="leftBtn"><span class="fa fa-chevron-left"></span></button>
+            <div class="scrolling-wrapper">
+                <div v-for="video in playlist.playlist.videos" class="card">
+                    <thumbnail  :title="video.name" :thumbnail="video.poster" :duration="video.duration" :created_at="video.created_at"> </thumbnail>
+                </div>
             </div>
-        </div>
-        <button id="rightBtn"><span class="fa fa-chevron-right"></span></button>
-    </div>  
+            <button id="rightBtn"><span class="fa fa-chevron-right"></span></button>
+        </div>  
+    </div>
 </template>
 <script>
 export default {
-    props: ['playlistid', 'name'],
 
     data: function () {
         return {
-          videos: []
+          videos: [],
+          playlists: []
         }
     },
 
     mounted: function () {
+
         console.log("mounted");
-        console.log(this.playlistid);
             axios
-        .post('/searchPlaylist', [this.playlistid])
+        .get('/searchPlaylists')
         .then((response => {
-            this.videos = response.data.videos;
-            console.log(this.videos);
+            this.playlists = response.data;
         }));
     }
 }
@@ -40,7 +41,7 @@ export default {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-}
+  }
 
   .card {
     display: inline-block;
