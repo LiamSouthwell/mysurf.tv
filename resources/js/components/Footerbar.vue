@@ -27,7 +27,6 @@
 <style scoped>
     .social {
         width: 100%;
-        border: 1px solid black;
         text-align: center;
     }
 

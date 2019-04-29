@@ -37,7 +37,7 @@
                 <navbar></navbar>
                 <router-view name="default"></router-view>
                 <br>
-                <h2 id="header" style="text-align: center; font-weight: bold; padding-bottom: 15px;">Picked just for you</h2>
+                <h2 id="header" style="text-align: center; font-weight: bold; padding-bottom: 15px;">Trending</h2>
                 <router-view name="viewport"></router-view>
                 <!--
                 @foreach($playlists as $playlist)

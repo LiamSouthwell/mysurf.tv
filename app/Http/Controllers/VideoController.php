@@ -38,7 +38,12 @@ class VideoController extends Controller
 
 
     public function search(Request $request){
+
         $accessToken = $this->accessToken();
+        //if($request['terms'] == "trending"){
+        //    $trending = $this->getTrending();
+        //    dd($trending);
+        //}
 
         $body = json_encode([
             'key-data' => [
@@ -119,7 +124,17 @@ class VideoController extends Controller
             return json_decode($res->getBody()->getContents())->access_token;
     }
 
-
+    function getTrending(){
+        $client = new Client();
+            $res = $client->request('GET', 'https://analytics.api.brightcove.com/v1/data?accounts=2728142626001&dimensions=video&sort=-video_view&limit=20', [
+                'headers' => [
+                    'Authorization' => 'Bearer'.$this->accessToken(),
+                ]
+            ]);
+            if($res->getStatusCode() == 200){
+                return $res->getBody()->getContents();
+            }
+    }
 /* THIS IS CODE TO REQUEST A SEARCH-ENABLED POLICY KEY
 $client = new Client();
         $res = $client->request('POST', 'https://policy.api.brightcove.com/v1/accounts/2728142626001/policy_keys', [

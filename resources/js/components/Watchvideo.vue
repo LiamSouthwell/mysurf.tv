@@ -23,10 +23,6 @@
 
 <script>
 import brightcovePlayerLoader from '@brightcove/player-loader';
-
-
-
-
 export default {
         
 

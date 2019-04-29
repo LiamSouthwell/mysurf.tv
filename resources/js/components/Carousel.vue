@@ -1,25 +1,28 @@
 
 <template>
     <div>
-        <h2>Enjoy our handpicked playlists!</h2>
         <div v-for="playlist in playlists" id="carousel" data-options="mode: carousel; height: 210px;">
+
         <p id="header">{{playlist.displayname}}</p>
-            <div class="scrolling-wrapper">
+            <div class="scrolling-wrapper" id="scroller">
                 <div v-for="video in playlist.playlist.videos" class="card">
                     <router-link :to="'/watch/'+video.id" >
                         <thumbnail  :title="video.name" :thumbnail="video.poster" :duration="video.duration" :created_at="video.created_at"> </thumbnail>
+                    
+                    <div class="titlewrap">
+                        <h4 class="title">{{video.name}}</h4>
+                    </div>
+
+                    <div class="footerwrap">
+                        <h4 class="footerinfo">{{msToTime(video.duration)}}</h4>
+                        <h4 class="footerinfo pull-right">{{createdAt(video.created_at)}}</h4>
+                    </div>
                     </router-link>
-                    <div class="title">
-                        <h4>{{video.name}}</h4>
-                    </div>
-                    <div class="videoInfo">
-                        <div class="vidName"> {{video.name}} </div>
-                    </div>
                 </div>
             </div>
             <div class="scrolling-btns">
-            <button id="leftBtn"><span class="fa fa-chevron-left"></span></button>
-            <button id="rightBtn"><span class="fa fa-chevron-right"></span></button>
+              <p id="leftBtn" v-on:click="scrollLeft()"><span class="fa fa-chevron-left" style="color: white"></span></p>
+              <p id="rightBtn" v-on:click="scrollRight()"><span class="fa fa-chevron-right" style="color: white"></span></p>
             </div>
         </div>  
     </div>
@@ -40,6 +43,29 @@ export default {
         .then((response => {
             this.playlists = response.data;
         }));
+    },
+    methods: {
+      msToTime: function(s) {
+        var ms = s % 1000;
+        s = (s - ms) / 1000;
+        var secs = s % 60;
+        s = (s - secs) / 60;
+        var mins = s % 60;
+        var hrs = (s - mins) / 60;
+        secs = String(secs).padEnd(2, "0");
+        return mins + ':' + secs ;
+      },
+      createdAt: function(s) {
+        var createdAt = s.substr(0, 10);
+
+        return createdAt;
+      },
+      scrollRight: function(){
+        document.getElementById('scroller').scrollLeft += 500;
+      },
+      scrollLeft: function(){
+        document.getElementById('scroller').scrollLeft -= 500;
+      }
     }
 }
 </script>
@@ -50,8 +76,9 @@ export default {
   }
 
  .scrolling-wrapper {
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
+  scroll-behavior: smooth;
   }
 
   .card {
@@ -60,41 +87,71 @@ export default {
     width: 350px;
     background: #dddddd;
   }
-
-  .title {
-    text-align: center;
-    font-size: 14px;
-    width: 100%;
-    color: white;
+  .titlewrap{
     position: absolute;
-    top: 10px;
-    left: 15px;
     margin: auto;
     transform: scaleY(0);
     transition: transform .3s;
+    background-image: linear-gradient(black, rgba(255,0,0,0));
+    white-space: pre-wrap;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: scaleY(1);
+    height: 50%;
+  }
+  .pull-right{
+    text-align: right !important;
+  }
+  .footerwrap{
+    position: absolute;
+    margin: auto;
+    transform: scaleY(0);
+    transition: transform .3s;
+    background-image: linear-gradient(rgba(255,0,0,0), black);
+    white-space: pre-wrap;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: scaleY(1);
+    height: 50%;
+    text-align: end;
+  }
+  .title {
+    font-weight: 800;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: left;
+    font-size: 12px !important;
+    width: 100%;
+    color: white;
   }
 
-  .title > h4 {
-      height: 35px;
-      font-size: 15px;
-      text-align: center;
+  .footerinfo{
+    font-weight: 400;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: left;
+    font-size: 12px !important;
+    position: absolute;
+    margin-bottom: 5px;
+    bottom: 0;
+    left: 5px;
+    right: 5px;
+    color: white;
   }
+
 
   .card .title {
-      white-space: pre-wrap;
-      width: 350px;
-      color: white;
-      position: absolute;
-      top: 10px;
-      left: 5px;
-      transform: scaleY(0);
-      transition: transform .3s;
+
+      
   }
 
-    .card:hover .title {
-    transform: scaleY(1);
-    background-image: linear-gradient(black, rgba(255,0,0,0));
-  }
+
 
     #header {
         font-weight: bold;
@@ -105,24 +162,42 @@ export default {
         white-space: nowrap;
         padding: 5px;
         margin: 10px;
-        height: 340px;
+        overflow:hidden;
     }
 
     .scrolling-btns {
-      position: relative;
+      position: absolute;
+      bottom: 40%;
+      left: 0;
+      width: 100%;
+      height: 10%;
+      z-index: 10;
   }
 
     #leftBtn {
         position: absolute;
-        left: 5px;
-        top: 60%;
+        left: 15px;
+        cursor: pointer;
+        background-color: rgba(0,0,0,0.5);
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        border-radius: 50%;
+        padding-right: 2px;
     }
 
     #rightBtn {
         position: absolute;
-        right: 5px;
-        top: 60%;
+        right: 15px;
+        cursor: pointer;
+        background-color: rgba(0,0,0,0.5);
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        border-radius: 50%;
+        padding-left: 2px;
     }
+
 
     .videoInfo {
         white-space: pre-wrap;

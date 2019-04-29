@@ -7,18 +7,24 @@
         <div v-else class="col-lg-3 col-md-4 col-sm-6 videoList" v-for="(video, index) in videos">
             <div class="row vids">
             <div class="col myCol">
-                <div class="video">
+                <div class="video embed-responsive-item">
                     <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
-                        <img style="width: inherit; height: inherit; border: double black 8px; border-radius: 15px" :src="video.poster" :id="'thumbnail'+index"/>
+                      <figure class="sixteen-nine-img"> 
+                        <img style="width: inherit; height: inherit; " :src="video.poster" :id="'thumbnail'+index"/>
+                      </figure>
+
+                    <div class="titlewrap">
+                        <h4 class="title">{{video.name}}</h4>
+                    </div>
+
+                    <div class="footerwrap">
+                        <h4 class="footerinfo">{{msToTime(video.duration)}}</h4>
+                        <h4 class="footerinfo pull-right">{{createdAt(video.created_at)}}</h4>
+                    </div>
                     </router-link>
-                <div class="title" style="width: inherit;">{{video.name}}</div>
+                
             </div>
-            <div class="videoInfo">
-                <div class="vidName"> {{video.name}} </div>
-                <hr>
-                <div class="videoSub half" :id="'date'+index"> {{video.published_at}}</div>
-                <div class="videoSub half text-right" :id="'duration'+index"> {{((video.duration/1000)/60).toFixed(0)}}:{{((video.duration/1000)%60).toFixed(0)}} </div>
-            </div>
+
             </div>
             </div>
         </div>
@@ -27,21 +33,28 @@
 </template>
 
 <style scoped>
-
+figure.sixteen-nine-img {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding-top: 56.25%;
+  position: relative;
+}
+figure.sixteen-nine-img img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
     .videoList {
         float: left;
     }
 
     .video {
-        height: 240px; 
-        width: 300px;
+
     }
 
-    hr{
-        margin-top: 0;
-        margin-bottom: 0;
-        border-top: 1px solid rgba(0,0,0,.3);
-    }
     
     .row{
         width: 95%;
@@ -62,41 +75,65 @@
         font-weight: bold;
     }
 
-    .videoInfo{
-        background-color: #f4f4f4;
-        width: 280px;
-        height: 70px;
-        outline: 2px solid black;
-        overflow: hidden;
-        word-wrap: break-word;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-      .title {
-      font-size: 15px;
-      text-align: center;
-      width: 100%;
-      color: white;
-      position: absolute;
-      top: 10px;
-      transform: scaleY(0);
-      transition: transform .3s;
-  }
-
-    .myCol:hover .title {
-    transform: scaleY(1);
+.titlewrap{
+    position: absolute;
+    margin: auto;
+    transform: scaleY(0);
+    transition: transform .3s;
     background-image: linear-gradient(black, rgba(255,0,0,0));
+    white-space: pre-wrap;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: scaleY(1);
+    height: 50%;
+  }
+  .pull-right{
+    text-align: right !important;
+  }
+  .footerwrap{
+    position: absolute;
+    margin: auto;
+    transform: scaleY(0);
+    transition: transform .3s;
+    background-image: linear-gradient(rgba(255,0,0,0), black);
+    white-space: pre-wrap;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: scaleY(1);
+    height: 50%;
+    text-align: end;
+  }
+  .title {
+    font-weight: 800;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: left;
+    font-size: 12px !important;
+    width: 100%;
+    color: white;
   }
 
-  .vidName {
-      height: 40px;
-      width: 260px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: bold;
-      margin-left: 10px;
-      margin-right: 10px;
+  .footerinfo{
+    font-weight: 400;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: left;
+    font-size: 12px !important;
+    position: absolute;
+    margin-bottom: 5px;
+    bottom: 0;
+    left: 5px;
+    right: 5px;
+    color: white;
   }
+
+
 
     div {
         width: 100%;
@@ -105,7 +142,6 @@
     }
 
     .myCol {
-        height: 280px;
         padding-bottom: 10px;
         margin-bottom: 60px;
         padding-left: 0;
@@ -136,23 +172,15 @@
 
     @media only screen and (max-width: 400px) {
       .myCol, .video, .vids {
-          width: 300px;
       }
 
       .videoInfo {
-          width: 280px;
           margin: auto;
       }
 
       .video > img {
-          width: 330px;
       }
 
-      .vidName {
-          width: 260px;
-          margin-left: 10px;
-          margin-right: 10px;
-      }
     }
 
 </style>
@@ -187,9 +215,25 @@
                 .post('/search', {terms: this.terms})
                 .then((response => {
                     this.videos = response.data.videos;
+                    console.log(this.videos);
                     this.loading = false;
                 }));
             },
+        msToTime: function(s) {
+        var ms = s % 1000;
+        s = (s - ms) / 1000;
+        var secs = s % 60;
+        s = (s - secs) / 60;
+        var mins = s % 60;
+        var hrs = (s - mins) / 60;
+        secs = String(secs).padEnd(2, "0");
+        return mins + ':' + secs ;
+      },
+      createdAt: function(s) {
+        var createdAt = s.substr(0, 10);
+
+        return createdAt;
+      },
         }
     }
 </script>
