@@ -4,12 +4,12 @@
         <div v-if="this.loading">
             <loader> </loader>
         </div>
-        <div v-else class="col-lg-4 videoList" v-for="(video, index) in videos">
+        <div v-else class="col-lg-3 col-md-4 col-sm-6 videoList" v-for="(video, index) in videos">
             <div class="row vids">
             <div class="col myCol">
-                <div style="height: 240px; width: 300px; border: 1px solid black; border-bottom: none;" class="video">
+                <div class="video">
                     <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
-                        <img style="width: inherit; height: inherit" :src="video.poster" :id="'thumbnail'+index"/>
+                        <img style="width: inherit; height: inherit; border: double black 8px;" :src="video.poster" :id="'thumbnail'+index"/>
                     </router-link>
                 <div class="title" style="width: inherit;">{{video.name}}</div>
             </div>
@@ -30,6 +30,11 @@
 
     .videoList {
         float: left;
+    }
+
+    .video {
+        height: 240px; 
+        width: 300px;
     }
 
     hr{
@@ -72,7 +77,6 @@
       color: white;
       position: absolute;
       top: 10px;
-      left: 15px;
       transform: scaleY(0);
       transition: transform .3s;
   }
@@ -84,9 +88,12 @@
 
   .vidName {
       height: 40px;
+      width: 290px;
       text-align: center;
       font-size: 14px;
       font-weight: bold;
+      margin-left: 5px;
+      margin-right: 5px;
   }
 
     div {
@@ -99,6 +106,8 @@
         height: 280px;
         padding-bottom: 10px;
         margin-bottom: 60px;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .addBtn {
@@ -121,6 +130,22 @@
             display: flex;
             flex-flow: row wrap;
         }
+    }
+
+    @media only screen and (max-width: 400px) {
+      .myCol, .video, .videoInfo {
+          width: 330px;
+      }
+
+      .video > img {
+          width: 330px;
+      }
+
+      .vidName {
+          width: 310px;
+          margin-left: 10px;
+          margin-right: 10px;
+      }
     }
 
 </style>

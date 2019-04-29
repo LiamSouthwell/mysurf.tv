@@ -1,6 +1,7 @@
 
 <template>
     <div>
+        <h2>Enjoy our handpicked playlists!</h2>
         <div v-for="playlist in playlists" id="carousel" data-options="mode: carousel; height: 210px;">
         <p id="header">{{playlist.displayname}}</p>
             <div class="scrolling-wrapper">
@@ -44,7 +45,10 @@ export default {
 </script>
 
 <style scoped>
-
+  h2 {
+      text-align: center;
+  }
+  
  .scrolling-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
