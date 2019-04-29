@@ -43,30 +43,8 @@
                 @foreach($playlists as $playlist)
                     <carousel playlistid="{{$playlist->playlistid}}" name="{{$playlist->name}}"></carousel>
                 @endforeach
-
-                
-
-                <div class="container">
-                    <h4 style="text-align: center;">Top picks for you</h4>
-                    <watchvideo ></watchvideo>
-                    <videolist></videolist>
-                <div>
                 -->
-                <div id="footer">
-                    <div>
-                        <a href="https://www.facebook.com/surfingaustraliainc/">
-                            <img src="{{asset('/images/fblogo.png')}}" width="60px" height="60px" style="float: left">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://www.instagram.com/surfingaus/">
-                            <img src="{{asset('/images/iglogo.png')}}" width="60px" height="60px">
-                        </a>
-                    </div>
-                    <div style="width: 265px; position: relative; display: block; margin: auto; padding-bottom: 5px;">
-                        All content © 2019: <a href="https://www.surfingaustralia.com/">Surfing Australia</a>
-                    </div>
-                </div>
+                <footerbar></footerbar>
             </div>
 
     </body>

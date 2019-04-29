@@ -9,7 +9,7 @@
             <div class="col myCol">
                 <div class="video">
                     <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
-                        <img style="width: inherit; height: inherit; border: double black 8px;" :src="video.poster" :id="'thumbnail'+index"/>
+                        <img style="width: inherit; height: inherit; border: double black 8px; border-radius: 15px" :src="video.poster" :id="'thumbnail'+index"/>
                     </router-link>
                 <div class="title" style="width: inherit;">{{video.name}}</div>
             </div>
@@ -63,12 +63,14 @@
     }
 
     .videoInfo{
-        background-color: rgba(255,255,255,0.3);
-        width: 300px;
+        background-color: #f4f4f4;
+        width: 280px;
         height: 70px;
-        outline: 1px solid black;
+        outline: 2px solid black;
         overflow: hidden;
         word-wrap: break-word;
+        margin-left: 10px;
+        margin-right: 10px;
     }
       .title {
       font-size: 15px;
@@ -88,12 +90,12 @@
 
   .vidName {
       height: 40px;
-      width: 290px;
+      width: 260px;
       text-align: center;
       font-size: 14px;
       font-weight: bold;
-      margin-left: 5px;
-      margin-right: 5px;
+      margin-left: 10px;
+      margin-right: 10px;
   }
 
     div {
@@ -133,8 +135,13 @@
     }
 
     @media only screen and (max-width: 400px) {
-      .myCol, .video, .videoInfo {
-          width: 330px;
+      .myCol, .video, .vids {
+          width: 300px;
+      }
+
+      .videoInfo {
+          width: 280px;
+          margin: auto;
       }
 
       .video > img {
@@ -142,7 +149,7 @@
       }
 
       .vidName {
-          width: 310px;
+          width: 260px;
           margin-left: 10px;
           margin-right: 10px;
       }

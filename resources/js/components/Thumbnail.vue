@@ -14,6 +14,7 @@ export default {
 <style scoped>
     img {
         border: double black 8px;
+        border-radius: 15px;
     }
     #thumbs:hover > img {
         background-image: linear-gradient(black, rgba(255,0,0,0));

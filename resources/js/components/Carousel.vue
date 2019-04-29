@@ -48,7 +48,7 @@ export default {
   h2 {
       text-align: center;
   }
-  
+
  .scrolling-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
@@ -58,6 +58,7 @@ export default {
     display: inline-block;
     position: relative;
     width: 350px;
+    background: #dddddd;
   }
 
   .title {
@@ -125,12 +126,16 @@ export default {
 
     .videoInfo {
         white-space: pre-wrap;
-        width: 350px;
-        height: 60px;
-        outline: 1px solid black;
+        width: 330px;
+        height: 50px;
+        outline: 2px solid black;
+        background-color: #f4f4f4;
+        margin-left: 10px;
+        margin-right: 10px;
   }
 
     .vidName {
+      color: black;
       height: 50px;
       text-align: center;
       font-size: 14px;
