@@ -3,7 +3,6 @@
     <div>
         <div v-for="playlist in playlists" id="carousel" data-options="mode: carousel; height: 210px;">
         <p id="header">{{playlist.displayname}}</p>
-            <button id="leftBtn"><span class="fa fa-chevron-left"></span></button>
             <div class="scrolling-wrapper">
                 <div v-for="video in playlist.playlist.videos" class="card">
                     <router-link :to="'/watch/'+video.id" >
@@ -12,9 +11,15 @@
                     <div class="title">
                         <h4>{{video.name}}</h4>
                     </div>
+                    <div class="videoInfo">
+                        <div class="vidName"> {{video.name}} </div>
+                    </div>
                 </div>
             </div>
+            <div class="scrolling-btns">
+            <button id="leftBtn"><span class="fa fa-chevron-left"></span></button>
             <button id="rightBtn"><span class="fa fa-chevron-right"></span></button>
+            </div>
         </div>  
     </div>
 </template>
@@ -43,31 +48,35 @@ export default {
  .scrolling-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
-  white-space: nowrap;
   }
 
   .card {
     display: inline-block;
     position: relative;
-    width: 300px;
-    word-break: break-all;
-  }
-
-  h4 {
-    overflow: inherit;
+    width: 350px;
   }
 
   .title {
-      width: 350px;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    margin: auto;
+    transform: scaleY(0);
+    transition: transform .3s;
   }
 
   .title > h4 {
       height: 35px;
-      font-size: 14px;
+      font-size: 15px;
       text-align: center;
   }
 
   .card .title {
+      white-space: pre-wrap;
       width: 350px;
       color: white;
       position: absolute;
@@ -79,11 +88,7 @@ export default {
 
     .card:hover .title {
     transform: scaleY(1);
-    background: rgba(255, 0, 0, 0.6);
-  }
-
-  div {
-      display: block;
+    background-image: linear-gradient(black, rgba(255,0,0,0));
   }
 
     #header {
@@ -92,16 +97,50 @@ export default {
 
     #carousel {
         position: relative;
-        overflow: auto;
         white-space: nowrap;
         padding: 5px;
         margin: 10px;
+        height: 340px;
     }
 
-    #leftBtn, rightBtn {
+    .scrolling-btns {
+      position: relative;
+  }
+
+    #leftBtn {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        left: 5px;
+        top: 60%;
+    }
+
+    #rightBtn {
+        position: absolute;
+        right: 5px;
+        top: 60%;
+    }
+
+    .videoInfo {
+        white-space: pre-wrap;
+        width: 350px;
+        height: 60px;
+        outline: 1px solid black;
+  }
+
+    .vidName {
+      height: 50px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      margin-left: 5px;
+      margin-right: 5px;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+
+    div {
+        width: 100%;
+        margin-left: 0;
+        display: block;
     }
 
 </style>

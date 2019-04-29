@@ -16,6 +16,6 @@ export default {
         border: solid black 2px;
     }
     #thumbs:hover > img {
-        background: rgba(255, 0, 0, 0.6);
+        background-image: linear-gradient(black, rgba(255,0,0,0));
     }
 </style>

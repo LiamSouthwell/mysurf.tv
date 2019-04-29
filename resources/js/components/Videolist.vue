@@ -11,9 +11,11 @@
                     <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
                         <img style="width: inherit; height: inherit" :src="video.poster" :id="'thumbnail'+index"/>
                     </router-link>
-                <div class="title" style="width: inherit;"><h4>{{video.name}}</h4></div>
+                <div class="title" style="width: inherit;">{{video.name}}</div>
             </div>
             <div class="videoInfo">
+                <div class="vidName"> {{video.name}} </div>
+                <hr>
                 <div class="videoSub half" :id="'date'+index"> {{video.published_at}}</div>
                 <div class="videoSub half text-right" :id="'duration'+index"> {{((video.duration/1000)/60).toFixed(0)}}:{{((video.duration/1000)%60).toFixed(0)}} </div>
             </div>
@@ -58,26 +60,33 @@
     .videoInfo{
         background-color: rgba(255,255,255,0.3);
         width: 300px;
-        height: 65px;
+        height: 70px;
         outline: 1px solid black;
         overflow: hidden;
         word-wrap: break-word;
     }
       .title {
+      font-size: 15px;
       text-align: center;
       width: 100%;
       color: white;
       position: absolute;
       top: 10px;
       left: 15px;
-      margin: auto;
       transform: scaleY(0);
       transition: transform .3s;
   }
 
     .myCol:hover .title {
     transform: scaleY(1);
-    background: rgba(255, 0, 0, 0.6);
+    background-image: linear-gradient(black, rgba(255,0,0,0));
+  }
+
+  .vidName {
+      height: 40px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
   }
 
     div {
@@ -89,7 +98,7 @@
     .myCol {
         height: 280px;
         padding-bottom: 10px;
-        margin-bottom: 40px;
+        margin-bottom: 60px;
     }
 
     .addBtn {
