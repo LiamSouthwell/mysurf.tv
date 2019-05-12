@@ -34,33 +34,29 @@
 </template>
 
 <style scoped>
-figure.sixteen-nine-img {
-  width: 100%;
-  overflow: hidden;
-  margin: 0;
-  padding-top: 56.25%;
-  position: relative;
-}
-figure.sixteen-nine-img img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
-}
+    figure.sixteen-nine-img {
+      width: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding-top: 56.25%;
+      position: relative;
+    }
+    figure.sixteen-nine-img img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+    }
     .videoList {
         float: left;
     }
 
-    .video {
-
+    .header{
+        text-align: center; 
+        font-weight: bold; 
+        padding-bottom: 15px;
     }
-
-.header{
-    text-align: center; 
-    font-weight: bold; 
-    padding-bottom: 15px;
-}
     
     .row{
         width: 95%;
@@ -81,63 +77,63 @@ figure.sixteen-nine-img img {
         font-weight: bold;
     }
 
-.titlewrap{
-    position: absolute;
-    margin: auto;
-    transform: scaleY(0);
-    transition: transform .3s;
-    background-image: linear-gradient(black, rgba(255,0,0,0));
-    white-space: pre-wrap;
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    transform: scaleY(1);
-    height: 50%;
-  }
-  .pull-right{
-    text-align: right !important;
-  }
-  .footerwrap{
-    position: absolute;
-    margin: auto;
-    transform: scaleY(0);
-    transition: transform .3s;
-    background-image: linear-gradient(rgba(255,0,0,0), black);
-    white-space: pre-wrap;
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 0px;
-    transform: scaleY(1);
-    height: 50%;
-    text-align: end;
-  }
-  .title {
-    font-weight: 800;
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    text-align: left;
-    font-size: 12px !important;
-    width: 100%;
-    color: white;
-  }
+    .titlewrap{
+        position: absolute;
+        margin: auto;
+        transform: scaleY(0);
+        transition: transform .3s;
+        background-image: linear-gradient(black, rgba(255,0,0,0));
+        white-space: pre-wrap;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transform: scaleY(1);
+        height: 50%;
+    }
+    .pull-right{
+        text-align: right !important;
+    }
+    .footerwrap{
+        position: absolute;
+        margin: auto;
+        transform: scaleY(0);
+        transition: transform .3s;
+        background-image: linear-gradient(rgba(255,0,0,0), black);
+        white-space: pre-wrap;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: scaleY(1);
+        height: 50%;
+        text-align: end;
+    }
+    .title {
+        font-weight: 800;
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        text-align: left;
+        font-size: 12px !important;
+        width: 100%;
+        color: white;
+    }
 
-  .footerinfo{
-    font-weight: 400;
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    text-align: left;
-    font-size: 12px !important;
-    position: absolute;
-    margin-bottom: 5px;
-    bottom: 0;
-    left: 5px;
-    right: 5px;
-    color: white;
-  }
+    .footerinfo{
+        font-weight: 400;
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        text-align: left;
+        font-size: 12px !important;
+        position: absolute;
+        margin-bottom: 5px;
+        bottom: 0;
+        left: 5px;
+        right: 5px;
+        color: white;
+    }
 
 
 

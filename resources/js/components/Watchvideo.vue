@@ -18,60 +18,65 @@ export default {
 
         data () {
             return {
-            	videoID: 0
+            	videoID: 0,
+            	nextvideo: []
             }
         },
         watch:{
             $route (to, from){
             	brightcovePlayerLoader.reset();
+            	this.playPlayer();
                 this.videoID = this.$route.params.id;
-            brightcovePlayerLoader({
-			  refNode: document.getElementById('#player-container'),
-			  accountId: '2728142626001',
-			  playerId: 'BJrkAHssG',
-			  videoId: this.$route.params.id
-			})
-			  .then(function(success) {
-			      var myPlayer = success.ref;
-			      console.log('success', success);
-			      myPlayer.on('loadedmetadata',function(){
-			        myPlayer.muted(true);
-			        myPlayer.play();
-			      });
-			  })
-			  .catch(function(error) {
-			  	console.log("ERROR");
-			  	console.log(error);
-			    // Player creation failed!
-			  });
-
-
             }
         },
         mounted() {	
-
-            brightcovePlayerLoader({
-			  refNode: document.getElementById('#player-container'),
-			  accountId: '2728142626001',
-			  playerId: 'BJrkAHssG',
-			  videoId: this.$route.params.id
-			})
-			  .then(function(success) {
-			      var myPlayer = success.ref;
-			      console.log('success', success);
-			      myPlayer.on('loadedmetadata',function(){
-			        myPlayer.muted(true);
-			        myPlayer.play();
-			      });
-			  })
-			  .catch(function(error) {
-			  	console.log("ERROR");
-			  	console.log(error);
-			    // Player creation failed!
-			  });
+        	this.playPlayer();
         	this.videoID = this.$route.params.id;
         },
-        methods:{}
+        methods:{
+        	playPlayer: function(){
+
+	        	brightcovePlayerLoader({
+				  refNode: document.getElementById('#player-container'),
+				  accountId: '2728142626001',
+				  playerId: 'BJrkAHssG',
+				  videoId: this.$route.params.id
+				})
+
+				.then((success)=>{
+
+				  var myPlayer = success.ref;
+				  myPlayer.on('loadedmetadata',function(){
+				    myPlayer.play();
+				  });
+
+				  myPlayer.on('ended', ()=>{ 
+				  	this.playRelated();
+				  });
+
+
+				})
+
+				.catch(function(error) {
+					console.log("ERROR");
+					console.log(error);
+				// Player creation failed!
+				});
+
+
+        	},
+
+        	playRelated: function() {
+        		var id = this.$route.params.id;
+				  	axios
+	            .post('/fetchrelated', {id: this.$route.params.id})
+	            .then((response => {
+	                this.nextvideo = response.data.videos[0];
+	                console.log(this.nextvideo.id);
+	                this.$router.push({ path: '/watch/' + this.nextvideo.id })
+	            }));
+        	}
+        }
 
 }
 
