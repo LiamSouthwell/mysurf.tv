@@ -1,6 +1,9 @@
 
 <template>
     <div>
+        
+        <h2  class="header" v-if="$route.params.id != null" >Related</h2>
+        <h2  class="header" v-else>Trending</h2>
         <div v-if="this.loading">
             <loader> </loader>
         </div>
@@ -53,6 +56,11 @@ figure.sixteen-nine-img img {
 
     }
 
+.header{
+    text-align: center; 
+    font-weight: bold; 
+    padding-bottom: 15px;
+}
     
     .row{
         width: 95%;
