@@ -122,11 +122,11 @@ export default {
   .title {
     font-weight: 800;
     margin-top: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 7.5px;
+    margin-right: 7.5px;
     text-align: left;
     font-size: 12px !important;
-    width: 100%;
+    width: 90%;
     color: white;
   }
 
