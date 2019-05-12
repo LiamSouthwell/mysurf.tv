@@ -15,9 +15,11 @@ Route::get('/', 'VideoController@index');
 Route::post('/thumbnail', 'VideoController@thumbnail');
 Route::get('/watch/{videoID}', 'VideoController@watch');
 Route::post('/search', 'VideoController@search');
+Route::get('/fetchtrending', 'VideoController@getTrending');
 
 Route::get('/searchPlaylists', 'VideoController@searchPlaylists');
 Route::post('/searchPlaylist', 'VideoController@searchPlaylist');
+Route::post('/fetchrelated', 'VideoController@getRelated');
 
 Route::get('/test', function () {
     return view('test');

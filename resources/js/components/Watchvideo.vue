@@ -1,18 +1,8 @@
 
 <template>
+
 	<div class="embed-responsive embed-responsive-16by9">
 		<div id="#player-container" class="videoplayer"> </div>
-		   <!--<video :data-video-id="5986584291001" 
-		        data-account="2728142626001" 
-		        data-player="BJrkAHssG" 
-		        data-embed="default" 
-		        data-application-id 
-		        class="video-js videoplayer" 
-		        controls 
-		        id="player">
-		    </video>-->
-
-
 	</div>
 
 </template>
@@ -79,8 +69,6 @@ export default {
 			  	console.log(error);
 			    // Player creation failed!
 			  });
-
-        	console.log	("VIDEO WATCH");
         	this.videoID = this.$route.params.id;
         },
         methods:{}

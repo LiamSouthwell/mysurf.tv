@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark mb-2">
         
-            <a href="#" class="navbar-brand"><img id="logo" src="/images/mysurftvlogo.png" width="50" height="50" ></a>
+            <router-link to="/"><div class="navbar-brand"><img id="logo"  src="/images/mysurftvlogo.png" width="50" height="50" ></div></router-link>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#searchBar">
                 <span class="fa fa-search" aria-hidden="true"></span>
             </button>

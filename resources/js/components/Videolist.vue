@@ -6,26 +6,24 @@
         </div>
         <div v-else class="col-lg-3 col-md-4 col-sm-6 videoList" v-for="(video, index) in videos">
             <div class="row vids">
-            <div class="col myCol">
-                <div class="video embed-responsive-item">
-                    <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
-                      <figure class="sixteen-nine-img"> 
-                        <img style="width: inherit; height: inherit; " :src="video.poster" :id="'thumbnail'+index"/>
-                      </figure>
+                <div class="col myCol">
+                    <div class="video embed-responsive-item">
+                        <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
+                          <figure class="sixteen-nine-img"> 
+                            <img style="width: inherit; height: inherit; " :src="video.poster" :id="'thumbnail'+index"/>
+                          </figure>
 
-                    <div class="titlewrap">
-                        <h4 class="title">{{video.name}}</h4>
+                        <div class="titlewrap">
+                            <h4 class="title">{{video.name}}</h4>
+                        </div>
+
+                        <div class="footerwrap">
+                            <h4 class="footerinfo">{{msToTime(video.duration)}}</h4>
+                            <h4 class="footerinfo pull-right">{{createdAt(video.created_at)}}</h4>
+                        </div>
+                        </router-link>
                     </div>
-
-                    <div class="footerwrap">
-                        <h4 class="footerinfo">{{msToTime(video.duration)}}</h4>
-                        <h4 class="footerinfo pull-right">{{createdAt(video.created_at)}}</h4>
-                    </div>
-                    </router-link>
-                
-            </div>
-
-            </div>
+                </div>
             </div>
         </div>
 
@@ -200,40 +198,65 @@ figure.sixteen-nine-img img {
         },
         watch:{
             $route (to, from){
-                this.terms = this.$route.params.terms;
+                this.terms = this.$route.params.terms;                
                 this.loadThumbnails();
             }
         },
         methods:{
+
             loadThumbnails () {
                 this.loading = true;
-                if(this.terms == ""){
-                    this.terms = "surfing";
-                }
-
+                if(this.$route.params.id != null){
+                    this.getRelated();
+                } else if(this.terms == "" || this.terms == null){
+                    this.getTrending();
+                } else {
                     axios
                 .post('/search', {terms: this.terms})
                 .then((response => {
                     this.videos = response.data.videos;
-                    console.log(this.videos);
                     this.loading = false;
                 }));
+                }
             },
-        msToTime: function(s) {
-        var ms = s % 1000;
-        s = (s - ms) / 1000;
-        var secs = s % 60;
-        s = (s - secs) / 60;
-        var mins = s % 60;
-        var hrs = (s - mins) / 60;
-        secs = String(secs).padEnd(2, "0");
-        return mins + ':' + secs ;
-      },
-      createdAt: function(s) {
-        var createdAt = s.substr(0, 10);
 
-        return createdAt;
-      },
+            msToTime: function(s) {
+            var ms = s % 1000;
+            s = (s - ms) / 1000;
+            var secs = s % 60;
+            s = (s - secs) / 60;
+            var mins = s % 60;
+            var hrs = (s - mins) / 60;
+            secs = String(secs).padEnd(2, "0");
+            return mins + ':' + secs ;
+            },
+
+            createdAt: function(s) {
+            var createdAt = s.substr(0, 10);
+            return createdAt;
+            },
+
+            getTrending: function() {
+                    axios
+                .get('/fetchtrending')
+                .then((response => {
+                    this.videos = response.data.videos;
+                    this.loading = false;
+                }));
+
+            },
+
+            getRelated: function() {
+                var id = this.$route.params.id;
+
+                    axios
+                .post('/fetchrelated', {id: id})
+                .then((response => {
+                    this.videos = response.data.videos;
+                    this.loading = false;
+                }));
+            }
+
         }
     }
 </script>

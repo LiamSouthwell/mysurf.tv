@@ -4,7 +4,7 @@
         <div v-for="playlist in playlists" id="carousel" data-options="mode: carousel; height: 210px;">
 
         <p id="header">{{playlist.displayname}}</p>
-            <div class="scrolling-wrapper" id="scroller">
+            <div class="scrolling-wrapper" :id="'scroller'+playlist.displayname">
                 <div v-for="video in playlist.playlist.videos" class="card">
                     <router-link :to="'/watch/'+video.id" >
                         <thumbnail  :title="video.name" :thumbnail="video.poster" :duration="video.duration" :created_at="video.created_at"> </thumbnail>
@@ -21,8 +21,8 @@
                 </div>
             </div>
             <div class="scrolling-btns">
-              <p id="leftBtn" v-on:click="scrollLeft()"><span class="fa fa-chevron-left" style="color: white"></span></p>
-              <p id="rightBtn" v-on:click="scrollRight()"><span class="fa fa-chevron-right" style="color: white"></span></p>
+              <p id="leftBtn" v-on:click="scrollLeft(playlist.displayname)"><span class="fa fa-chevron-left" style="color: white"></span></p>
+              <p id="rightBtn" v-on:click="scrollRight(playlist.displayname)"><span class="fa fa-chevron-right" style="color: white"></span></p>
             </div>
         </div>  
     </div>
@@ -60,11 +60,11 @@ export default {
 
         return createdAt;
       },
-      scrollRight: function(){
-        document.getElementById('scroller').scrollLeft += 500;
+      scrollRight: function(id){
+        document.getElementById('scroller'+id).scrollLeft += 500;
       },
-      scrollLeft: function(){
-        document.getElementById('scroller').scrollLeft -= 500;
+      scrollLeft: function(id){
+        document.getElementById('scroller'+id).scrollLeft -= 500;
       }
     }
 }
