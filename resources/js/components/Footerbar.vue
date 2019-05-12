@@ -10,7 +10,7 @@
                 <img src="/images/iglogo.png" width="60px" height="60px">
             </a>
         </div>
-        <div style="width: 265px; position: relative; display: block; margin: auto; padding-bottom: 5px;">
+        <div>
             All content © 2019: <a href="https://www.surfingaustralia.com/">Surfing Australia</a>
         </div>
     </div>
@@ -26,7 +26,11 @@
 
 <style scoped>
     .social {
+        position: relative;
+        display: inline-block;
+        bottom: 0;
         width: 100%;
+        height: 110px;
         text-align: center;
     }
 
