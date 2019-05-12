@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link to="/"><p class="nav-link">Playlists</p> </router-link>
+                    <a href="/playlists" class="nav-link">Playlists</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">Latest</a>
@@ -86,6 +86,10 @@ h3{
 .nav-link{
     color: white !important;
     font-weight: 650;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: black !important;
 }
 
 .search{
