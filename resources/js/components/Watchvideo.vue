@@ -71,7 +71,7 @@ export default {
 				  	axios
 	            .post('/fetchrelated', {id: this.$route.params.id})
 	            .then((response => {
-	                this.nextvideo = response.data.videos[0];
+	                this.nextvideo = response.data.videos[1];
 	                console.log(this.nextvideo.id);
 	                this.$router.push({ path: '/watch/' + this.nextvideo.id })
 	            }));
