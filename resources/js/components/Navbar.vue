@@ -22,7 +22,7 @@
                     <a href="#" class="nav-link">Trending</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Links</a>
+                    <a href="/login" class="nav-link">Admin</a>
                 </li>
             </ul>
             </div>

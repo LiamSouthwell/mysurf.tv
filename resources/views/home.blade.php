@@ -15,6 +15,12 @@
                     @endif
 
                     You are logged in!
+
+                    <div id="adminButton">
+                        <button type="button" class="btn btn-success">
+                        <a href="/playlists">Playlist Panel<a>
+                        </button>
+                    <div>
                 </div>
             </div>
         </div>
