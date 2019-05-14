@@ -59,7 +59,7 @@
     }
     
     .row{
-        width: 95%;
+        width: 98%;
         margin: auto;
     }
 
@@ -145,7 +145,7 @@
 
     .myCol {
         padding-bottom: 10px;
-        margin-bottom: 60px;
+        margin-bottom: 25px;
         padding-left: 0;
         padding-right: 0;
     }
