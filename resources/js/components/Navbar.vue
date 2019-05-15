@@ -28,7 +28,7 @@
                     <div id="darkMode">
                         <span id="darkTitle">Dark Mode</span>
                         <label class="switch">
-                            <input type="checkbox">
+                            <input type="checkbox" @click="toggleClass()">
                             <span class="slider round"></span>
                         </label>
                         <div id="toggleLabels">
@@ -55,12 +55,22 @@ module.exports = {
     data: function () {
         return {
             data: 'hello',
+            isActive: false
         }
     },
 
     methods: {
     search: function() {
       this.$router.push({path: '/search/' + document.getElementById("searchTerms").value})
+    },
+    toggleClass: function() {
+        if(this.isActive){
+            this.isActive = false;
+            console.log("Turning dark mode off");
+        } else {
+            this.isActive = true;
+            console.log("Turning dark mode on");
+        }
     }
   }
 }
