@@ -86,13 +86,14 @@ export default {
     position: relative;
     width: 350px;
     background: #dddddd;
+    border: 3px solid #F1F1F2;
   }
   .titlewrap{
     position: absolute;
     margin: auto;
     transform: scaleY(0);
     transition: transform .3s;
-    background-image: linear-gradient(black, rgba(255,0,0,0));
+    background-image: linear-gradient(#1995AD, rgba(255,0,0,0));
     white-space: pre-wrap;
     width: 100%;
     position: absolute;
@@ -125,9 +126,9 @@ export default {
     margin-left: 7.5px;
     margin-right: 7.5px;
     text-align: left;
-    font-size: 12px !important;
+    font-size: 14px !important;
     width: 90%;
-    color: white;
+    color: #F1F1F2;
   }
 
   .footerinfo{
@@ -144,14 +145,6 @@ export default {
     right: 5px;
     color: white;
   }
-
-
-  .card .title {
-
-      
-  }
-
-
 
     #header {
         font-weight: bold;

@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="/playlists" class="nav-link">Playlists</a>
+                    <a href="/playlists" class="nav-link">Watch</a>
                 </li>
                 <li class="nav-item">
                     <a href="/latest" class="nav-link">Latest</a>
@@ -67,13 +67,13 @@ module.exports = {
         if(this.isActive){
             this.isActive = false;
             console.log("Turning dark mode off");
-            document.body.style.backgroundColor = "#C4DFE6";
-            document.body.style.color = "#003B46";
+            document.body.style.backgroundColor = "#F1F1F2";
+            document.body.style.color = "#1995AD";
         } else {
             this.isActive = true;
             console.log("Turning dark mode on");
-            document.body.style.backgroundColor = "#003B46";
-            document.body.style.color = "#C4DFE6";
+            document.body.style.backgroundColor = "#1995AD";
+            document.body.style.color = "#F1F1F2";
         }
     }
   }
@@ -83,26 +83,17 @@ module.exports = {
 </script>
 <style scoped>
 
-h3{
-    font-size: 18px;
-    margin: auto;
-    font-weight: 900;
-}
-
 .navbar-toggler{
     color: #C4DFE6;
     border: none;
  }
 
-#navbarMenu{
-    color: #003B46;
-}
-
 .navbar{
     background-image: url('/images/mysurftvmainmenubg.png');
-    background-size: cover;
+    background-size: 100% 76px;
     background-repeat: no-repeat;
-    box-shadow: inset 0 0 0 1000px #C4DFE6 0.5;
+    background-position: center top;
+    background-color: #F1F1F2;
 }
 
 .navbar-nav {
@@ -110,12 +101,12 @@ h3{
 }
 
 .nav-link{
-    color: #C4DFE6 !important;
+    color: #F1F1F2 !important; 
     font-weight: 650;
 }
 
 .nav-link:hover, .nav-link:focus {
-    color: #003B46 !important;
+    color: #A1D6E2 !important;
 }
 
 .search{
@@ -125,14 +116,15 @@ h3{
 
 .searchbtn{
     margin-left: 2px;
-    background-color: rgb(43,63,81);
+    background-color: #A1D6E2;
     color: white;
     width: 20%;
 }
 
 #searchTerms {
-    background-color: #dddddd;
-    color: white;
+    height: 38px;
+    background-color: #F1F1F2;
+    color: #1995AD;
 }
  
  @media only screen and (min-width: 600px) {
@@ -241,6 +233,10 @@ input:checked + .slider:before {
 }
 
  @media only screen and (min-width: 1000px) {
+     .navbar {
+         background-size: cover;
+     }
+
      #darkMode {
          position: relative;
          width: 160px;
@@ -251,21 +247,27 @@ input:checked + .slider:before {
          display: inline-block;
          float: right;
          top: 3px;
+         color: #F1F1F2;
      }
 
      #offOn {
          right: -75px;
          top: 36px;
+         color: #F1F1F2;
      }
  }
 
 @media only screen and (max-width: 1000px) {
     .nav-link{
-    color: #003B46 !important;
+    color: #1995AD !important;
     font-weight: 650;
 }
-    .navbar-toggler, #offOn, #darkTitle {
-        color: #003B46;
+    .navbar-toggler {
+        color: #F1F1F2;
+    }
+
+    #offOn, #darkTitle {
+        color: #1995AD;
     }
 }
 

@@ -40,6 +40,7 @@
       margin: 0;
       padding-top: 56.25%;
       position: relative;
+      border: 3px solid #F1F1F2;
     }
     figure.sixteen-nine-img img {
       position: absolute;
@@ -56,6 +57,7 @@
         text-align: center; 
         font-weight: bold; 
         padding-bottom: 15px;
+        color: #1995AD;
     }
     
     .row{
@@ -82,7 +84,7 @@
         margin: auto;
         transform: scaleY(0);
         transition: transform .3s;
-        background-image: linear-gradient(black, rgba(255,0,0,0));
+        background-image: linear-gradient(#1995AD, rgba(255,0,0,0));
         white-space: pre-wrap;
         width: 100%;
         position: absolute;
@@ -115,9 +117,10 @@
         margin-left: 5px;
         margin-right: 5px;
         text-align: left;
-        font-size: 12px !important;
+        font-size: 14px !important;
+        font-weight: bold;
         width: 100%;
-        color: white;
+        color: #F1F1F2;
     }
 
     .footerinfo{
