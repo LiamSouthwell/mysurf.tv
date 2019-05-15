@@ -67,9 +67,13 @@ module.exports = {
         if(this.isActive){
             this.isActive = false;
             console.log("Turning dark mode off");
+            document.body.style.backgroundColor = "#e2e2e2";
+            document.body.style.color = "black";
         } else {
             this.isActive = true;
             console.log("Turning dark mode on");
+            document.body.style.backgroundColor = "#544b4b";
+            document.body.style.color = "white";
         }
     }
   }

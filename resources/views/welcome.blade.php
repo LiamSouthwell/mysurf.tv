@@ -31,7 +31,7 @@
                 </div>
             @endif -->
 
-            <div id="app" style="background-color: #dddddd">
+            <div id="app">
                 <!--<router-link to="/search">/link1</router-link>
                 <router-link to="/view">/link1</router-link>-->
                 <navbar></navbar>
