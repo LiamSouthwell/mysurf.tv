@@ -128,7 +128,7 @@ export default {
 span {
 	position: absolute;
 	right: 68px;
-	margin-top: 5px;
+	top: 5px;
 }
 
 #toggleLabels {
@@ -143,7 +143,7 @@ label {
 
 #offOn {
 	position: relative;
-	top: 32px;
+	top: 36px;
 }
 
 .switch {

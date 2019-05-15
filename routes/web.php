@@ -25,6 +25,14 @@ Route::get('/test', function () {
     return view('test');
 });
 
+Route::get('/latest', function () {
+    return view('latest');
+});
+
+Route::get('/trending', function () {
+    return view('trending');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
