@@ -61,10 +61,10 @@ export default {
         return createdAt;
       },
       scrollRight: function(id){
-        document.getElementById('scroller'+id).scrollLeft += 500;
+        document.getElementById('scroller'+id).scrollLeft += 348;
       },
       scrollLeft: function(id){
-        document.getElementById('scroller'+id).scrollLeft -= 500;
+        document.getElementById('scroller'+id).scrollLeft -= 348;
       }
     }
 }

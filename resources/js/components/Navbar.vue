@@ -67,13 +67,13 @@ module.exports = {
         if(this.isActive){
             this.isActive = false;
             console.log("Turning dark mode off");
-            document.body.style.backgroundColor = "#e2e2e2";
-            document.body.style.color = "black";
+            document.body.style.backgroundColor = "#C4DFE6";
+            document.body.style.color = "#003B46";
         } else {
             this.isActive = true;
             console.log("Turning dark mode on");
-            document.body.style.backgroundColor = "#544b4b";
-            document.body.style.color = "white";
+            document.body.style.backgroundColor = "#003B46";
+            document.body.style.color = "#C4DFE6";
         }
     }
   }
@@ -85,24 +85,24 @@ module.exports = {
 
 h3{
     font-size: 18px;
-    color: white;
     margin: auto;
     font-weight: 900;
 }
 
 .navbar-toggler{
-    color: white;
+    color: #C4DFE6;
     border: none;
  }
 
 #navbarMenu{
-    color: white;
+    color: #003B46;
 }
 
 .navbar{
     background-image: url('/images/mysurftvmainmenubg.png');
     background-size: cover;
     background-repeat: no-repeat;
+    box-shadow: inset 0 0 0 1000px #C4DFE6 0.5;
 }
 
 .navbar-nav {
@@ -110,12 +110,12 @@ h3{
 }
 
 .nav-link{
-    color: white !important;
+    color: #C4DFE6 !important;
     font-weight: 650;
 }
 
 .nav-link:hover, .nav-link:focus {
-    color: black !important;
+    color: #003B46 !important;
 }
 
 .search{
@@ -258,5 +258,15 @@ input:checked + .slider:before {
          top: 36px;
      }
  }
+
+@media only screen and (max-width: 1000px) {
+    .nav-link{
+    color: #003B46 !important;
+    font-weight: 650;
+}
+    .navbar-toggler, #offOn, #darkTitle {
+        color: #003B46;
+    }
+}
 
 </style>
