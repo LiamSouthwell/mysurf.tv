@@ -1,7 +1,6 @@
 
 <template>
     <div>
-        
         <h2  class="header" v-if="$route.params.id != null" >Related</h2>
         <h2  class="header" v-else>Trending</h2>
         <div v-if="this.loading">
@@ -40,6 +39,7 @@
       margin: 0;
       padding-top: 56.25%;
       position: relative;
+      border: 3px solid #F1F1F2;
     }
     
     figure.sixteen-nine-img img {
@@ -50,6 +50,7 @@
       transform: translate(-50%, -50%);
       border: 3px solid #F1F1F2;
     }
+
     .videoList {
         float: left;
     }
@@ -59,6 +60,8 @@
         font-weight: bold; 
         padding-bottom: 15px;
         color: #1995AD;
+        border-top: 1px solid grey;
+        padding-top: 20px;
     }
     
     .row{
@@ -94,9 +97,11 @@
         transform: scaleY(1);
         height: 50%;
     }
+
     .pull-right{
         text-align: right !important;
     }
+
     .footerwrap{
         position: absolute;
         margin: auto;
@@ -112,6 +117,7 @@
         height: 50%;
         text-align: end;
     }
+
     .title {
         font-weight: 800;
         margin-top: 10px;
@@ -138,8 +144,6 @@
         right: 5px;
         color: white;
     }
-
-
 
     div {
         width: 100%;
@@ -177,16 +181,10 @@
     }
 
     @media only screen and (max-width: 400px) {
-      .myCol, .video, .vids {
-      }
 
       .videoInfo {
           margin: auto;
       }
-
-      .video > img {
-      }
-
     }
 
 </style>

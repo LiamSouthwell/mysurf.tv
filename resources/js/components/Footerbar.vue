@@ -1,5 +1,6 @@
 <template>
     <div class="social">
+        <p>Join Us</p>
         <div class="facebook">
             <a href="https://www.facebook.com/surfingaustraliainc/">
                 <img src="/images/fblogo.png" width="60px" height="60px">
@@ -32,6 +33,7 @@
         width: 100%;
         height: 110px;
         text-align: center;
+        font-weight: bold;
     }
 
     .facebook {
