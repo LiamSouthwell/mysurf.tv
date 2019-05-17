@@ -40,14 +40,15 @@
       margin: 0;
       padding-top: 56.25%;
       position: relative;
-      border: 3px solid #F1F1F2;
     }
+    
     figure.sixteen-nine-img img {
       position: absolute;
       top: 50%;
       left: 50%;
       width: 100%;
       transform: translate(-50%, -50%);
+      border: 3px solid #F1F1F2;
     }
     .videoList {
         float: left;

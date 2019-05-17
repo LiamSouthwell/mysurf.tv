@@ -2,11 +2,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark mb-2">
         
             <router-link to="/"><div class="navbar-brand"><img id="logo"  src="/images/mysurftvlogo.png" width="50" height="50" ></div></router-link>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#searchBar">
+            <button class="navbar-toggler" id="srchBtn" data-toggle="collapse" data-target="#searchBar">
                 <span class="fa fa-search" aria-hidden="true"></span>
             </button>
 
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+            <button class="navbar-toggler" id="barsBtn" data-toggle="collapse" data-target="#navbarMenu">
                 <span class="fa fa-bars"></span>
             </button>
 
@@ -39,9 +39,8 @@
             </ul>
             </div>
 
-
             <div class="collapse navbar-collapse" id="searchBar">
-                <div class="active-cyan-3 active-cyan-4">
+                <div class="active-cyan-3 active-cyan-4" id="srch"> 
                     <input id="searchTerms" class="form-control search" type="text" placeholder="What are you looking for?" aria-label="Search">
                     <button class="searchbtn btn" @click="search()"> Go </button>
                 </div>
@@ -67,12 +66,12 @@ module.exports = {
         if(this.isActive){
             this.isActive = false;
             console.log("Turning dark mode off");
-            document.body.style.backgroundColor = "#F1F1F2";
-            document.body.style.color = "#1995AD";
+            document.body.style.backgroundColor = "#e6e6e6";
+            document.body.style.color = "#212529";
         } else {
             this.isActive = true;
             console.log("Turning dark mode on");
-            document.body.style.backgroundColor = "#1995AD";
+            document.body.style.backgroundColor = "#003B46";
             document.body.style.color = "#F1F1F2";
         }
     }
@@ -85,7 +84,11 @@ module.exports = {
 
 .navbar-toggler{
     color: #C4DFE6;
-    border: none;
+    border: 1px solid white;
+    border-radius: 25px;
+    background-color: #2d3f51;
+    width: 44x;
+    height: 44px;
  }
 
 .navbar{
@@ -93,7 +96,23 @@ module.exports = {
     background-size: 100% 76px;
     background-repeat: no-repeat;
     background-position: center top;
-    background-color: #F1F1F2;
+    background-color: #F1F1F1;
+}
+
+#srchBtn {
+    position: absolute;
+    right: 60px;
+    top: 13px;
+}
+
+#barsBtn {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+}
+
+#srch {
+    margin-top: 10px;
 }
 
 .navbar-nav {
@@ -116,7 +135,7 @@ module.exports = {
 
 .searchbtn{
     margin-left: 2px;
-    background-color: #A1D6E2;
+    background-color: #2d3f51;
     color: white;
     width: 20%;
 }
@@ -131,6 +150,7 @@ module.exports = {
     #searchBar {
     position: absolute;
     right: 5px;
+    margin-top: 5px;
     }
 
     #searchTerms {
@@ -259,7 +279,7 @@ input:checked + .slider:before {
 
 @media only screen and (max-width: 1000px) {
     .nav-link{
-    color: #1995AD !important;
+    color: black !important;
     font-weight: 650;
 }
     .navbar-toggler {
@@ -267,7 +287,7 @@ input:checked + .slider:before {
     }
 
     #offOn, #darkTitle {
-        color: #1995AD;
+        color: black;
     }
 }
 
