@@ -59,7 +59,7 @@ const routes = [
 	},
     {
     	path: '/', 
-		components: {default: maincomponent, viewport: videolist}	  
+		components: {default: maincomponent}	  
     },
     {
     	path: '/watch/:id', 

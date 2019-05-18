@@ -52,7 +52,7 @@ class FetchVideos
         $client = new Client();
         $res = $client->request(
             'GET', 
-            'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/videos?sort=-published_at', 
+            'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/videos?sort=-created_at', 
             [
                 'headers' => [
                     'BCOV-Policy' => env('BRIGHTCOVE_POLICY_KEY'),
