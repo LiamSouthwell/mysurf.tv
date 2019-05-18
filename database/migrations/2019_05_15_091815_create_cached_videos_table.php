@@ -14,12 +14,12 @@ class CreateCachedVideosTable extends Migration
     public function up()
     {
         Schema::create('cached_videos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('identifier');
             $table->string('name');
             $table->string('description');
             $table->integer('duration');
             $table->string('thumbnail');
-            $table->string('video_id');
+            $table->string('id');
             $table->string('list');
             $table->timestamps();
         });

@@ -88,6 +88,7 @@ class VideoController extends Controller
                     ->limit(15)
                     ->get()
                     ->toArray();
+
         return $videos;
     }
 
