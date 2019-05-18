@@ -46,7 +46,7 @@ export default {
             	nextvideo: [],
             	autoplay: true,
             	title: "",
-            	user: ["none"]
+            	user: ["none"],
             }
         },
         watch:{
@@ -59,7 +59,9 @@ export default {
         mounted() {	
         	this.playPlayer();
         	this.videoID = this.$route.params.id;
-
+					document.getElementById("header").style.color = "#F1F1F2";
+          document.getElementById("vidBtns").style.color = "#212529";
+					
 			axios
 	            .get('/getUser')
 	            .then((response => {
