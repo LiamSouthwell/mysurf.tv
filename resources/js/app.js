@@ -15,7 +15,7 @@ import videolist from './components/Videolist.vue';
 import navbar from './components/Navbar.vue';
 import carousel from './components/Carousel.vue';
 import footerbar from './components/Footerbar.vue';
-
+import maincomponent from './components/MainComponent.vue';
 
 window.Vue = require('vue');
 Vue.use(VueRouter);
@@ -44,6 +44,8 @@ Vue.component('videolist', require('./components/Videolist.vue').default);
 Vue.component('watchvideo', require('./components/Watchvideo.vue').default);
 Vue.component('carousel', require('./components/Carousel.vue').default);
 Vue.component('thumbnail', require('./components/Thumbnail.vue').default);
+Vue.component('maincomponent', require('./components/MainComponent.vue').default);
+
 
 const routes = [
     { 
@@ -57,7 +59,7 @@ const routes = [
 	},
     {
     	path: '/', 
-		components: {default: carousel, viewport: videolist}	  
+		components: {default: maincomponent, viewport: videolist}	  
     },
     {
     	path: '/watch/:id', 

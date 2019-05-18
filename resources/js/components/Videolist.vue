@@ -13,7 +13,7 @@
                     <div class="video embed-responsive-item">
                         <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
                           <figure class="sixteen-nine-img"> 
-                            <img style="width: inherit; height: inherit; " :src="video.poster" :id="'thumbnail'+index"/>
+                            <img style="width: inherit; height: inherit; " :src="video.thumbnail" :id="'thumbnail'+index"/>
                           </figure>
 
                         <div class="titlewrap">

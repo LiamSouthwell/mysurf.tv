@@ -35,6 +35,7 @@
                 <!--<router-link to="/search">/link1</router-link>
                 <router-link to="/view">/link1</router-link>-->
                 <navbar></navbar>
+
                 <router-view name="default"></router-view>
                 <br>
                 <router-view name="viewport"></router-view>
