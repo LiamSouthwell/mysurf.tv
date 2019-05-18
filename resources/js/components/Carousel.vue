@@ -143,6 +143,7 @@ export default {
     #header {
         font-weight: bold;
         border-bottom: 1px solid grey;
+        padding-left: 15px;
     }
 
     #carousel {

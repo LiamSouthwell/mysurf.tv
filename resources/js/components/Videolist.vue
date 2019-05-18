@@ -1,8 +1,8 @@
 
 <template>
     <div>
-        <h2  class="header" v-if="$route.params.id != null" >Related</h2>
-        <h2  class="header" v-else>Trending</h2>
+        <h2  id="header" v-if="$route.params.id != null" >Related</h2>
+        <h2  id="header" v-else>Trending</h2>
         <div v-if="this.loading">
             <loader> </loader>
         </div>
@@ -55,11 +55,11 @@
         float: left;
     }
 
-    .header{
+    #header{
         text-align: center; 
         font-weight: bold; 
         padding-bottom: 15px;
-        color: #1995AD;
+        color: #2d3f51;
         border-top: 1px solid grey;
         padding-top: 20px;
     }
@@ -126,8 +126,9 @@
         text-align: left;
         font-size: 14px !important;
         font-weight: bold;
-        width: 100%;
+        width: 95%;
         color: #F1F1F2;
+        padding-left: 5px;
     }
 
     .footerinfo{

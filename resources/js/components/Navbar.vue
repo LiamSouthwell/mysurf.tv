@@ -76,11 +76,14 @@ module.exports = {
             console.log("Turning dark mode off");
             document.body.style.backgroundColor = "#e6e6e6";
             document.body.style.color = "#212529";
+            document.getElementById("header").style.color = "#2d3f51";
         } else {
             this.isActive = true;
             console.log("Turning dark mode on");
             document.body.style.backgroundColor = "#003B46";
             document.body.style.color = "#F1F1F2";
+            document.getElementById("vidBtns").style.color = "#212529";
+            document.getElementById("header").style.color = "#F1F1F2";
         }
     }
   }

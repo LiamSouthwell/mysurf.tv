@@ -8,21 +8,24 @@
 		<div id="vidInfo">
 			<h2>{{this.title}}</h2>
 		</div>
-		<div>
-			<i class="material-icons" v-on:click="addToPlaylist">
-				playlist_add
-			</i>
-		</div>
+		<div id="vidBtns">
+			<div>
+				<i class="material-icons" v-on:click="addToPlaylist">
+					playlist_add
+				</i>
+				<label id="addPlaylist">Add to playlist</label>
+			</div>
 
-		<div id="autoplay">
-			<span>Autoplay next video</span>
-			<label class="switch">
-				<input type="checkbox">
-				<span class="slider round"></span>
-			</label>
-			<div id="toggleLabels">
-			<label id="offOn">Off/On</label>
-		</div>
+			<div id="autoplay">
+				<span>Autoplay next video</span>
+				<label class="switch">
+					<input type="checkbox">
+					<span class="slider round"></span>
+				</label>
+				<div id="toggleLabels">
+				<label id="offOn">Off/On</label>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -142,26 +145,48 @@ export default {
 }
 
 #vidInfo {
+	width: 80%;
 	margin-top: 15px;
 	text-align: center;
+	margin-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #autoplay {
-	height: 50px;
+	height: 75px;
 	width: 100%;
 	position: relative;
 	text-align: right;
 	right: 0;
 	margin-right: 5px;
+	top: -10px;
+}
+
+#vidBtns {
+	background-color: #F1F1F1;
+	padding-top: 15px
 }
 
 span {
 	position: absolute;
 	right: 68px;
-	top: 5px;
+	top: 10px;
 }
 
-#toggleLabels {
+#addPlaylist {
+	position: absolute;
+	left: 35px;
+	float: left;
+}
+
+.material-icons {
+	position: absolute;
+	left: 10px;
+	float: left;
+}
+
+#toggleLabels, {
 	text-align: right;
 	right: 5px;
 }
@@ -173,7 +198,7 @@ label {
 
 #offOn {
 	position: relative;
-	top: 36px;
+	top: 40px;
 }
 
 .switch {
@@ -181,6 +206,7 @@ label {
   width: 60px;
   height: 34px;
 	right: 5px;
+	top: 8px;
 }
 
 /* Hide default HTML checkbox */
