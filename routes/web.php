@@ -23,7 +23,7 @@ Route::post('/fetchrelated', 'VideoController@getRelated');
 Route::get('/fetchrecent', 'VideoController@getRecent');
 
 Route::get('/tester', 'VideoController@tester');
-
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/test', function () {
     return view('test');
@@ -39,7 +39,7 @@ Route::get('/trending', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'VideoController@index');
 
 Route::middleware('admin')->group(function () {
 	Route::get('/playlists', 'PlaylistController@index');

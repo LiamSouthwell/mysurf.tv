@@ -22,8 +22,15 @@
                     <a href="/trending" class="nav-link">Trending</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/login" class="nav-link">Admin</a>
+                    <a href="/login" v-if="this.user == null" class="nav-link">Login</a>
                 </li>
+                <li class="nav-item" v-if="this.user != null">
+                    <a class="nav-link">Welcome, {{this.user.name}}</a>
+                </li>
+                <li class="nav-item" v-if="this.user != null">
+                    <a href="/logout" class="nav-link">Logout</a>
+                </li>
+
                 <li class="nav-item">
                     <div id="darkMode">
                         <span id="darkTitle">Dark Mode</span>
@@ -57,6 +64,7 @@ module.exports = {
             isActive: false
         }
     },
+    props: ['user'],
 
     methods: {
     search: function() {
