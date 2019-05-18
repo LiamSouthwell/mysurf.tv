@@ -1,13 +1,12 @@
 
 <template>
     <div>
-        <div v-for="playlist in playlists" id="carousel" data-options="mode: carousel; height: 210px;">
-
-        <p id="header">{{playlist.displayname}}</p>
-            <div class="scrolling-wrapper" :id="'scroller'+playlist.displayname">
-                <div v-for="video in playlist.playlist.videos" class="card">
+        <p id="header">{{this.title}}</p>
+        <div id="carousel" data-options="mode: carousel; height: 210px;">      
+            <div class="scrolling-wrapper" :id="'scroller'+this.title">
+                <div v-for="video in videos" class="card">
                     <router-link :to="'/watch/'+video.id" >
-                        <thumbnail  :title="video.name" :thumbnail="video.poster" :duration="video.duration" :created_at="video.created_at"> </thumbnail>
+                        <thumbnail  :title="video.name" :thumbnail="video.thumbnail" :duration="video.duration" :created_at="video.created_at"> </thumbnail>
                     
                     <div class="titlewrap">
                         <h4 class="title">{{video.name}}</h4>
@@ -20,11 +19,11 @@
                     </router-link>
                 </div>
             </div>
-            <div class="scrolling-btns">
-              <p id="leftBtn" v-on:click="scrollLeft(playlist.displayname)"><span class="fa fa-chevron-left" style="color: white"></span></p>
-              <p id="rightBtn" v-on:click="scrollRight(playlist.displayname)"><span class="fa fa-chevron-right" style="color: white"></span></p>
+            <div class="scrolling-btns" >
+              <p id="leftBtn" v-on:click="scrollLeft(title)"><span class="fa fa-chevron-left" style="color: white"></span></p>
+              <p id="rightBtn" v-on:click="scrollRight(title)"><span class="fa fa-chevron-right" style="color: white"></span></p>
             </div>
-        </div>  
+        </div> 
     </div>
 </template>
 <script>
@@ -32,17 +31,12 @@ export default {
 
     data: function () {
         return {
-          videos: [],
-          playlists: []
+
         }
     },
-
+    props: ['title', 'videos'],
     mounted: function () {
-            axios
-        .get('/searchPlaylists')
-        .then((response => {
-            this.playlists = response.data;
-        }));
+
     },
     methods: {
       msToTime: function(s) {

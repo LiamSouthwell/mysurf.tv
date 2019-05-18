@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Jobs\FetchVideos;
 use GuzzleHttp\Client;
+use App\CachedVideo;
 use App\Playlist;
  
 class VideoController extends Controller
@@ -14,25 +16,10 @@ class VideoController extends Controller
         return view('welcome')->with('playlists', $playlists);
     }
 
-    public function thumbnail(Request $request){
-        $client = new Client();
-        $thumbs = $this.requestthumbnails($request['videos']);
-        return $thumbs;
-    }
-
     public function search(Request $request){
-        $client = new Client();
-        $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/videos?q='.$request['terms'], [
-                'headers' => [
-                    'BCOV-Policy' => env('BRIGHTCOVE_POLICY_KEY'),
-                ]
-            ]);
-        if($res->getStatusCode() != 200)
-            return $res->getStatusCode();
-        else
-            return $res->getBody()->getContents();
+        $videoGrabber = new FetchVideos();
+        return $videoGrabber->search($request['terms']);
     }
-
 
     public function searchPlaylists(){
         $playlists = Playlist::orderBy('order', 'asc')->get();
@@ -52,7 +39,7 @@ class VideoController extends Controller
         if($res->getStatusCode() != 200)
             dd("Something went wrong");
         else
-            array_push($playlistsforview, ['displayname'=> $playlist->name, 'playlist'=>json_decode($res->getBody()->getContents())]);
+            array_push($playlistsforview, ['title'=> $playlist->name, 'videos'=>json_decode($res->getBody()->getContents())]);
         }
 
         return $playlistsforview;       
@@ -77,20 +64,6 @@ class VideoController extends Controller
   
     }
 
-    function accessToken(){
-        $client = new Client();
-        $res = $client->request('POST', 'https://oauth.brightcove.com/v4/access_token?grant_type=client_credentials', [
-                'headers' => [
-                    'Authorization' => 'Basic '.base64_encode(env('BRIGHTCOVE_CLIENT_ID').':'.env('BRIGHTCOVE_CLIENT_SECRET')),
-                    'Content-Type' => 'application/x-www-form-urlencoded'
-                ]
-            ]);
-        if($res->getStatusCode() != 200)
-            return $res->getStatusCode();
-        else
-            return json_decode($res->getBody()->getContents())->access_token;
-    }
-
     public function thumbnails($videos){
         $client = new Client();
         $videoInfo = [];
@@ -107,53 +80,39 @@ class VideoController extends Controller
         return $videoInfo;
     }
 
+
+
     public function getTrending(){
-        $client = new Client();
-            $res = $client->request('GET', 'https://analytics.api.brightcove.com/v1/data?accounts=2728142626001&dimensions=video&sort=-video_view&limit=20', [
-                'headers' => [
-                    'Authorization' => 'Bearer '.$this->accessToken(),
-                ]
-            ]);
-            if($res->getStatusCode() == 200){
-                $videos = $res->getBody()->getContents();
-                $videos = json_decode($videos);
-                $thumbnails = $this->thumbnails($videos->items);
-                return ['videos'=>$thumbnails];
-            }
+        $videos['videos'] = CachedVideo::latest('created_at')
+                    ->where('list', '=', 'trending')
+                    ->limit(15)
+                    ->get()
+                    ->toArray();
+        return $videos;
+    }
+
+    public function getRecent(Request $request){
+        $videoGrabber = new FetchVideos();
+        return $videoGrabber->recent();
     }
 
     public function getRelated(Request $request){
-        $client = new Client();
-            $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/videos/'.$request['id'].'/related', [
-                'headers' => [
-                    'BCOV-Policy' => env('BRIGHTCOVE_POLICY_KEY'),
-                ]
-            ]);
-            if($res->getStatusCode() == 200){
-                return $res->getBody()->getContents();
-            }
+        $videoGrabber = new FetchVideos();
+        return $videoGrabber->related($request['id']);
     }
 
-
-
-
-/* THIS IS CODE TO REQUEST A SEARCH-ENABLED POLICY KEY
+    private function accessToken(){
         $client = new Client();
-        $accessToken = $this->accessToken();
-        $body = json_encode([
-            'key-data' => [
-                'account-id' => '2728142626001',
-                'apis' => ['search'],
-            ],
-        ]);
-        $res = $client->request('POST', 'https://policy.api.brightcove.com/v1/accounts/2728142626001/policy_keys', [
+        $res = $client->request('POST', 'https://oauth.brightcove.com/v4/access_token?grant_type=client_credentials', [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $accessToken,
-                    'Content-Type' => 'application/json',
-                ],
-                'body' => $body,
+                    'Authorization' => 'Basic '.base64_encode(env('BRIGHTCOVE_CLIENT_ID').':'.env('BRIGHTCOVE_CLIENT_SECRET')),
+                    'Content-Type' => 'application/x-www-form-urlencoded'
+                ]
             ]);
-        dd(json_decode($res->getBody()->getContents()));
-*/
+        if($res->getStatusCode() != 200)
+            return $res->getStatusCode();
+        else
+            return json_decode($res->getBody()->getContents())->access_token;
+    }
 
 }

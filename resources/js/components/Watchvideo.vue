@@ -5,7 +5,7 @@
 			<div id="#player-container" class="videoplayer"> </div>
 		</div>
 		<div id="vidInfo">
-			<h2>Placeholder Video Title</h2>
+			<h2>{{this.title}}</h2>
 		</div>
 		<div id="autoplay">
 			<span>Autoplay next video</span>
@@ -33,7 +33,9 @@ export default {
         data () {
             return {
             	videoID: 0,
-            	nextvideo: []
+            	nextvideo: [],
+            	autoplay: true,
+            	title: ""
             }
         },
         watch:{
@@ -60,12 +62,15 @@ export default {
 				.then((success)=>{
 
 				  var myPlayer = success.ref;
-				  myPlayer.on('loadedmetadata',function(){
+
+				  myPlayer.on('loadedmetadata',()=>{
+				  	this.title = myPlayer.mediainfo.name;
 				    myPlayer.play();
 				  });
 
 				  myPlayer.on('ended', ()=>{ 
-				  	this.playRelated();
+				  	if(this.autoplay)
+				  		this.playRelated();
 				  });
 
 

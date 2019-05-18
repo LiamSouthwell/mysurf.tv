@@ -20,6 +20,10 @@ Route::get('/fetchtrending', 'VideoController@getTrending');
 Route::get('/searchPlaylists', 'VideoController@searchPlaylists');
 Route::post('/searchPlaylist', 'VideoController@searchPlaylist');
 Route::post('/fetchrelated', 'VideoController@getRelated');
+Route::get('/fetchrecent', 'VideoController@getRecent');
+
+Route::get('/tester', 'VideoController@tester');
+
 
 Route::get('/test', function () {
     return view('test');
