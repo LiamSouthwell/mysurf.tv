@@ -40,7 +40,7 @@ Route::get('/trending', function () {
 Auth::routes();
 
 Route::get('/home', 'VideoController@index');
-
+Route::get('/getUser', 'VideoController@getUser');
 Route::middleware('admin')->group(function () {
 	Route::get('/playlists', 'PlaylistController@index');
 	Route::get('/playlists/create', 'PlaylistController@create');

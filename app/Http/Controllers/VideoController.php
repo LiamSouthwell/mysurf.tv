@@ -7,6 +7,7 @@ use App\Jobs\FetchVideos;
 use GuzzleHttp\Client;
 use App\CachedVideo;
 use App\Playlist;
+use Auth;
  
 class VideoController extends Controller
 {
@@ -64,24 +65,6 @@ class VideoController extends Controller
   
     }
 
-    public function thumbnails($videos){
-        $client = new Client();
-        $videoInfo = [];
-        foreach($videos as $videoID){
-            $res = $client->request('GET', 'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/videos/'.$videoID->video, [
-                'headers' => [
-                    'BCOV-Policy' => env('BRIGHTCOVE_POLICY_KEY'),
-                ]
-            ]);
-            if($res->getStatusCode() == 200){
-                array_push($videoInfo, json_decode($res->getBody()->getContents()));
-            }
-        }
-        return $videoInfo;
-    }
-
-
-
     public function getTrending(){
         $videos['videos'] = CachedVideo::latest('created_at')
                     ->where('list', '=', 'trending')
@@ -114,6 +97,13 @@ class VideoController extends Controller
             return $res->getStatusCode();
         else
             return json_decode($res->getBody()->getContents())->access_token;
+    }
+
+    public function getUser(){
+        if(Auth::Check())
+            return Auth::User();
+        else
+            return ["none"];
     }
 
 }

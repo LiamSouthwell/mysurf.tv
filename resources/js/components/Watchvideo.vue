@@ -1,12 +1,19 @@
 
 <template>
 	<div>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
 		<div class="embed-responsive embed-responsive-16by9">
 			<div id="#player-container" class="videoplayer"> </div>
 		</div>
 		<div id="vidInfo">
 			<h2>{{this.title}}</h2>
 		</div>
+		<div>
+			<i class="material-icons" v-on:click="addToPlaylist">
+				playlist_add
+			</i>
+		</div>
+
 		<div id="autoplay">
 			<span>Autoplay next video</span>
 			<label class="switch">
@@ -35,7 +42,8 @@ export default {
             	videoID: 0,
             	nextvideo: [],
             	autoplay: true,
-            	title: ""
+            	title: "",
+            	user: ["none"]
             }
         },
         watch:{
@@ -48,8 +56,25 @@ export default {
         mounted() {	
         	this.playPlayer();
         	this.videoID = this.$route.params.id;
+
+			axios
+	            .get('/getUser')
+	            .then((response => {
+	            	this.user = response.data;
+	            	console.log(response.data);
+	            }));
+
         },
         methods:{
+        	addToPlaylist: function(){
+        		if(this.user[0] != ["none"])
+        			console.log(this.user);
+        		else
+        			window.location.href = "/register";
+
+
+        	},
+
         	playPlayer: function(){
 
 	        	brightcovePlayerLoader({
