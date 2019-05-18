@@ -82,8 +82,8 @@ module.exports = {
             console.log("Turning dark mode on");
             document.body.style.backgroundColor = "#003B46";
             document.body.style.color = "#F1F1F2";
-            document.getElementById("vidBtns").style.color = "#212529";
             document.getElementById("header").style.color = "#F1F1F2";
+            document.getElementById("vidBtns").style.color = "#212529";
         }
     }
   }

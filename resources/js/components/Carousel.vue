@@ -80,14 +80,14 @@ export default {
     position: relative;
     width: 350px;
     background: #dddddd;
-    border: 3px solid #F1F1F2;
+    border: 2px solid #F1F1F2;
   }
   .titlewrap{
     position: absolute;
     margin: auto;
     transform: scaleY(0);
     transition: transform .3s;
-    background-image: linear-gradient(#1995AD, rgba(255,0,0,0));
+    background-image: linear-gradient(#2d3f51, rgba(255,0,0,0));
     white-space: pre-wrap;
     width: 100%;
     position: absolute;
@@ -104,7 +104,7 @@ export default {
     margin: auto;
     transform: scaleY(0);
     transition: transform .3s;
-    background-image: linear-gradient(rgba(255,0,0,0), black);
+    background-image: linear-gradient(rgba(255,0,0,0), #2d3f51);
     white-space: pre-wrap;
     width: 100%;
     position: absolute;

@@ -39,7 +39,6 @@
       margin: 0;
       padding-top: 56.25%;
       position: relative;
-      border: 3px solid #F1F1F2;
     }
     
     figure.sixteen-nine-img img {
@@ -48,7 +47,6 @@
       left: 50%;
       width: 100%;
       transform: translate(-50%, -50%);
-      border: 3px solid #F1F1F2;
     }
 
     .videoList {

@@ -39,7 +39,9 @@ export default {
                 this.carousels.push({"title":el.title, "videos": el.videos.videos});
             })
         }));
-        
+        document.body.style.backgroundColor = "#e6e6e6";
+        document.body.style.color = "#212529";
+        document.getElementById("header").style.color = "#2d3f51";
     },
     methods: {
 
