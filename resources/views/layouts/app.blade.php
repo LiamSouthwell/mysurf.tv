@@ -28,7 +28,7 @@
                 </a>
                 <h5 id="adminHeader">mySURF.TV Admin Login</h5>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon" style="text-align: center;"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,7 +38,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto" style="font-weight: 650; text-align: right; font-size: 20px;">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

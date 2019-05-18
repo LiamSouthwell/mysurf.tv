@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="background-color: #e6e6e6;">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+            <div class="card" style="background-color: #F1F1F2;">
+                <div class="card-header" style="font-size: 24px; font-weight: bold;">{{ __('Login') }}</div>
 
-                <div class="card-body">
+                <div class="card-body" style="font-size: 20px;">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -42,10 +42,10 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" style="height: 20px; width: 20px;" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                    <label class="form-check-label" for="remember" style="margin-left: 10px;">
+                                        {{ __(' Remember Me') }}
                                     </label>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="background-color: #2d3f51;">
                                     {{ __('Login') }}
                                 </button>
 
