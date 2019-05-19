@@ -63,10 +63,10 @@ export default {
         return createdAt;
       },
       scrollRight: function(id){
-        document.getElementById('scroller'+id).scrollLeft += 348;
+        document.getElementById('scroller'+id).scrollLeft += 350;
       },
       scrollLeft: function(id){
-        document.getElementById('scroller'+id).scrollLeft -= 348;
+        document.getElementById('scroller'+id).scrollLeft -= 350;
       }
     }
 }
@@ -158,7 +158,6 @@ export default {
         position: relative;
         white-space: nowrap;
         padding: 5px;
-        margin: 10px;
         overflow:hidden;
     }
 
