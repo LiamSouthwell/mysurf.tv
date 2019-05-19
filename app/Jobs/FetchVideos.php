@@ -31,6 +31,21 @@ class FetchVideos
      * @return void
      */
 
+    public function video($id){
+        $client = new Client();
+        $res = $client->request(
+            'GET', 
+            'https://edge.api.brightcove.com/playback/v1/accounts/2728142626001/videos/'.$id, 
+            [
+                'headers' => [
+                    'BCOV-Policy' => env('BRIGHTCOVE_POLICY_KEY'),
+            ]
+        ]);
+        if($res->getStatusCode() == 200){
+            return json_decode($res->getBody()->getContents());
+        }
+    }
+
 
     public function related($id){
         $client = new Client();

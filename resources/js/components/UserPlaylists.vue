@@ -1,13 +1,12 @@
 <template>
 	<div class="container">
 		<div v-if="loading" class="text-center">
-			There are no playlists to dispay.
-
+			<loader></loader>
 		</div>
 		
 		<div v-else>
-			<div v-for="playlist in playlists">
-				<carousel  :title="playlist.name" :videos="[]"> </carousel>
+			<div v-for="playlist in playlistsCarousel">
+				<carousel  :title="playlist.title" :videos="playlist.videos"> </carousel>
 			</div>
 		</div>
 
@@ -68,7 +67,7 @@
             .then((response => {
                 	this.playlists = response.data;
                 	this.getVideosForPlaylists();
-                	this.loading = false;
+                	
 
             }));
     	},
@@ -85,20 +84,20 @@
             }));
     	},
     	getVideosForPlaylists: function(){
-    		this.playlists.forEach(function (playlist) {
+    		this.playlists.forEach((playlist) => {
+    			var name = playlist.name;
 	    			axios
 	    		.get('/fetchplaylistvideos/' + playlist.id)
 	    		.then((response=>{
-	    			console.log("TEST");
-	    			console.log(response.data);
+	    			var videos = response.data;
+	    			var playlist = {'title': name, 'videos': videos};
+	    			this.playlistsCarousel.push(playlist);
 
+    		
 	    		}));
     		})
-
-
-
-
-    	}
+			this.loading = false;	
+    	},
     }
 }
 

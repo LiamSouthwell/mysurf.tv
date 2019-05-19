@@ -1,6 +1,8 @@
 
 <template>
     <div>
+      <div v-if="videos.length != 0">
+
         <p id="header">{{this.title}}</p>
         <div id="carousel" data-options="mode: carousel; height: 210px;">      
             <div class="scrolling-wrapper" :id="'scroller'+this.title">
@@ -24,6 +26,12 @@
               <p id="rightBtn" v-on:click="scrollRight(title)"><span class="fa fa-chevron-right" style="color: white"></span></p>
             </div>
         </div> 
+      </div>
+      <div v-else>
+        <p id="header">{{this.title}}</p>
+        No videos to display.
+      </div>
+
     </div>
 </template>
 <script>
