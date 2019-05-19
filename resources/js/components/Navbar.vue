@@ -109,6 +109,10 @@ module.exports = {
     background-color: #dedbdb;
 }
 
+ul {
+    margin-top: 10px;
+}
+
 #srchBtn {
     position: absolute;
     right: 60px;
@@ -186,7 +190,6 @@ module.exports = {
   width: 60px;
   height: 34px;
   right: 2px;
-  top: 15px;
 }
 
 /* Hide default HTML checkbox */
@@ -245,7 +248,7 @@ input:checked + .slider:before {
 }
 
 #darkMode {
-	height: 55px;
+	height: 20px;
 	width: 100%;
 	position: relative;
 	text-align: right;

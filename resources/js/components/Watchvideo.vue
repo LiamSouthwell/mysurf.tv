@@ -17,7 +17,7 @@
 					<label id="addPlaylist">Add to playlist</label>
 				</div>
 				<div id="autoplay">
-					<label>Autoplay next video</label>
+					<label id="apLabel">Autoplay next video</label>
 					<label class="switch">
 						<input type="checkbox">
 						<span class="slider round"></span>
@@ -196,7 +196,7 @@ export default {
 }
 
 #titleBtns {
-	height: 140px;
+	height: 120px;
 }
 
 #vidInfo {
@@ -208,31 +208,40 @@ export default {
 	margin-right: auto;
 }
 
+#vidInfo > h2 {
+	font-size: 25px;
+}
+
 
 #autoplay {
-	height: 60px;
-	width: 49%;
-	margin-left: 50%;
+	height: 45px;
+	width: 56%;
+	max-width: 230px;
+	min-width: 215px;
 	position: relative;
 	text-align: right;
+	margin-left: auto;
 	right: 0;
-	margin-right: 5px;
-	top: -60px;
 	z-index: 1;
-	background-color: #2d3f51;
-	border: 3px solid white;
+	top: -45px;
+	color: black;
+	background-color: #dedbdb;
+	border: 1px solid #bfbfbf;
+	border-radius: 25px;
 }
 
 #addBtn {
 	color: black;
-	width: 35%;
-	height: 35px;
+	width: 40%;
+	height: 45px;
 	background-color: #dedbdb;
+	max-width: 150px;
+	border: 1px solid #bfbfbf;
+	border-radius: 25px;
 }
 
 #vidBtns {
 	z-index: -1;
-	padding-top: 15px
 }
 
 span {
@@ -248,15 +257,14 @@ span {
 	height: 34px;
 	width: 110px;
 	color: black;
-	background-color: #dedbdb;
-	padding-top: 5px;
+	padding-top: 10px;
 }
 
 .material-icons {
 	position: absolute;
 	left: 5px;
 	float: left;
-	padding-top: 5px;
+	padding-top: 10px;
 }
 
 #toggleLabels, {
@@ -264,23 +272,19 @@ span {
 	right: 5px;
 }
 
-label {
+#apLabel {
 	position: absolute;
-	right: 12px;
-	color: #C4DFE6;
-}
-
-#offOn {
-	position: relative;
-	top: 40px;
+	right: 60px;
+	top: 10px;
+	width: 141px;
 }
 
 .switch {
   position: absolute;
-  width: 60px;
+  width: 55px;
   height: 34px;
-	right: 5px;
-	top: 20px;
+	right: 2px;
+	top: 5px;
 }
 
 /* Hide default HTML checkbox */
@@ -338,6 +342,21 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+@media only screen and (min-wdith: 470px) {
+	#titleBtns {
+		height: 100px;
+	}
+}
+
+@media only screen and (min-width: 380px) {
+	#autoplay {
+		position: relative;
+	}
+	#titleBtns {
+		height: 110px;
+	}
+}
+
 
 </style>
 <style>
@@ -365,6 +384,13 @@ input:checked + .slider:before {
 	#titleBtns {
 		position: relative;
 		top: -200px;
+		height: 90px;
+	}
+}
+
+@media only screen and (min-width: 1360px) {
+	#titleBtns {
+		margin-top: 40px;
 	}
 }
 </style>
