@@ -2,7 +2,8 @@
 <template>
     <div>
         <h2  id="header" v-if="$route.params.id != null" >Related</h2>
-        <h2  id="header" v-else>Trending</h2>
+        <h2  id="header" v-else-if="$route.path == '/trending'">Trending</h2>
+        <h2  id="header" v-else-if="$route.path == '/latest'">Latest</h2>
         <div v-if="this.loading">
             <loader> </loader>
         </div>
@@ -213,8 +214,10 @@
                 this.loading = true;
                 if(this.$route.params.id != null){
                     this.getRelated();
-                } else if(this.terms == "" || this.terms == null){
+                } else if(this.$route.path == "/trending"){
                     this.getTrending();
+                } else if (this.$route.path == "/recent"){
+                    this.getRecent();
                 } else {
                     axios
                 .post('/search', {terms: this.terms})
@@ -250,7 +253,15 @@
                 }));
 
             },
+            getRecent: function() {
+                    axios
+                .get('/fetchrecent')
+                .then((response => {
+                    this.videos = response.data.videos;
+                    this.loading = false;
+                }));
 
+            },
             getRelated: function() {
                 var id = this.$route.params.id;
 
