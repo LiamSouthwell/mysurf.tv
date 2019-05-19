@@ -59,6 +59,8 @@
     },
     mounted() {
     	this.getPlaylists();
+			document.body.style.backgroundColor = "#e6e6e6";
+      document.body.style.color = "#212529";
     },
     methods:{
 		getPlaylists: function(){

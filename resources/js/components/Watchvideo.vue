@@ -97,7 +97,7 @@ export default {
         mounted() {	
         	this.playPlayer();
         	this.videoID = this.$route.params.id;
-					document.getElementById("header").style.color = "#F1F1F2";
+					document.getElementById("header").style.color = "#212529";
           document.getElementById("vidBtns").style.color = "#212529";
 					
 			axios
@@ -216,7 +216,7 @@ export default {
 	text-align: right;
 	right: 0;
 	margin-right: 5px;
-	top: -10px;
+	top: -20px;
 	z-index: 1;
 }
 
