@@ -63,10 +63,10 @@ export default {
         return createdAt;
       },
       scrollRight: function(id){
-        document.getElementById('scroller'+id).scrollLeft += 350;
+        document.getElementById('scroller'+id).scrollLeft += 365;
       },
       scrollLeft: function(id){
-        document.getElementById('scroller'+id).scrollLeft -= 350;
+        document.getElementById('scroller'+id).scrollLeft -= 365;
       }
     }
 }
@@ -86,7 +86,7 @@ export default {
   .card {
     display: inline-block;
     position: relative;
-    width: 350px;
+    width: 365px;
     background: #dddddd;
     border: 2px solid #F1F1F2;
   }
