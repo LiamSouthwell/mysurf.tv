@@ -18,7 +18,6 @@
     <body>
             <div id="app">
                 <navbar></navbar>
-                <!--- need to fetch latest vids here, fetching trending at the moment--->
                 <router-view name="viewport"></router-view>
                 <footerbar></footerbar>
             </div>

@@ -201,6 +201,7 @@
         },
         mounted() {
             this.loadThumbnails();
+            document.body.style.backgroundColor = "#e6e6e6";
         },
         watch:{
             $route (to, from){

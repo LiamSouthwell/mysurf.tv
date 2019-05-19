@@ -63,7 +63,9 @@
                                     </a>
                                 @endif
                                 <div style="margin-top:10px;">Don't have an account? 
-                                    <a href="{{ route('register') }}">Register</a>
+                                    <button type="submit" class="btn btn-primary" style="background-color: #2d3f51; display: block;">
+                                        <a style="color: white;" href="{{ route('register') }}">Register</a>
+                                    </button>
                                 </div>
                             </div>
                         </div> 

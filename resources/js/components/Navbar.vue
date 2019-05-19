@@ -9,26 +9,22 @@
             <button class="navbar-toggler" id="barsBtn" data-toggle="collapse" data-target="#navbarMenu">
                 <span class="fa fa-bars"></span>
             </button>
-
+            
             <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav">
                 <li class="nav-item" v-if="this.user != null">
                     <a class="nav-link">Welcome, {{this.user.name}}</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/playlists" class="nav-link">Watch</a>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/latest" class="nav-link">Latest</router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/trending" class="nav-link">Trending</router-link>
                     <a href="/login" v-if="this.user == null" class="nav-link">Login</a>
                 </li>
 
+                <li class="nav-item">
+                    <router-link to="/latest" class="nav-link">Latest</router-link>
+                </li>
                 </li>
                 <li class="nav-item">
-                    <a href="/trending" class="nav-link">Trending</a>
+                    <router-link to="/trending" class="nav-link">Trending</router-link>
                 </li>
                 <li class="nav-item" v-if="this.user != null">
                     <router-link to="/userplaylists" class="nav-link">My Playlists</router-link>
@@ -174,8 +170,8 @@ module.exports = {
     }
 
     #logo {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
     }
  }
 
@@ -269,14 +265,20 @@ input:checked + .slider:before {
     font-size: 14px;
 }
 
- @media only screen and (min-width: 992px) {
+ @media only screen and (min-width: 991px) {
      .navbar {
          background-size: cover;
+         color: #F1F1F2 !important;
      }
 
      .nav-link{
         color: #F1F1F2 !important; 
         font-weight: 650;
+    }
+
+     #logo {
+        width: 80px;
+        height: 80px;
     }
 
      #searchBar {
@@ -305,7 +307,7 @@ input:checked + .slider:before {
      }
  }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 991px) {
     .nav-link{
     color: black !important;
     font-weight: 650;
