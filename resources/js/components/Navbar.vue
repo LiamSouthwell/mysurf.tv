@@ -12,6 +12,9 @@
 
             <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav">
+                <li class="nav-item" v-if="this.user != null">
+                    <a class="nav-link">Welcome, {{this.user.name}}</a>
+                </li>
                 <li class="nav-item">
                     <a href="/playlists" class="nav-link">Watch</a>
                 </li>
@@ -20,15 +23,12 @@
                 </li>
                 <li class="nav-item">
                     <router-link to="/trending" class="nav-link">Trending</router-link>
-                </li>
-                <li class="nav-item">
                     <a href="/login" v-if="this.user == null" class="nav-link">Login</a>
                 </li>
-                <li class="nav-item" v-if="this.user != null">
-                    <a class="nav-link">Welcome, {{this.user.name}}</a>
+
                 </li>
-                <li class="nav-item" v-if="this.user != null">
-                    <a href="/logout" class="nav-link">Logout</a>
+                <li class="nav-item">
+                    <a href="/trending" class="nav-link">Trending</a>
                 </li>
                 <li class="nav-item" v-if="this.user != null">
                     <router-link to="/userplaylists" class="nav-link">My Playlists</router-link>
@@ -44,6 +44,9 @@
                         <label id="offOn">Off/On</label>
 		                </div>
 		            </div>
+                </li>
+                <li class="nav-item" v-if="this.user != null">
+                    <a href="/logout" class="nav-link">Logout</a>
                 </li>
             </ul>
             </div>
@@ -109,7 +112,7 @@ module.exports = {
     background-size: 100% 76px;
     background-repeat: no-repeat;
     background-position: center top;
-    background-color: #F1F1F1;
+    background-color: #e6e6e6;
 }
 
 #srchBtn {
@@ -163,7 +166,7 @@ module.exports = {
     #searchBar {
     position: absolute;
     right: 5px;
-    margin-top: 5px;
+    top: 75px;
     }
 
     #searchTerms {
@@ -171,8 +174,8 @@ module.exports = {
     }
 
     #logo {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
     }
  }
 
@@ -239,7 +242,7 @@ input:checked + .slider:before {
 }
 
 #darkMode {
-	height: 50px;
+	height: 55px;
 	width: 100%;
 	position: relative;
 	text-align: right;
@@ -262,13 +265,25 @@ input:checked + .slider:before {
 #offOn {
 	position: relative;
 	top: 33px;
-    right: 7.5px;
+    right: 6.5px;
+    font-size: 14px;
 }
 
- @media only screen and (min-width: 1000px) {
+ @media only screen and (min-width: 992px) {
      .navbar {
          background-size: cover;
      }
+
+     .nav-link{
+        color: #F1F1F2 !important; 
+        font-weight: 650;
+    }
+
+     #searchBar {
+        position: absolute;
+        right: 5px;
+        top: 15px;
+    }
 
      #darkMode {
          position: relative;
