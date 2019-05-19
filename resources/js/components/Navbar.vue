@@ -31,14 +31,11 @@
                 </li>
                 <li class="nav-item">
                     <div id="darkMode">
-                        <span id="darkTitle">Dark Mode</span>
+                        <span id="darkTitle">Enable Dark Mode</span>
                         <label class="switch">
                             <input type="checkbox" @click="toggleClass()">
                             <span class="slider round"></span>
                         </label>
-                        <div id="toggleLabels">
-                        <label id="offOn">Off/On</label>
-		                </div>
 		            </div>
                 </li>
                 <li class="nav-item" v-if="this.user != null">
@@ -81,7 +78,7 @@ module.exports = {
         } else {
             this.isActive = true;
             console.log("Turning dark mode on");
-            document.body.style.backgroundColor = "#003B46";
+            document.body.style.backgroundColor = "#161f28";
             document.body.style.color = "#F1F1F2";
             document.getElementById("header").style.color = "#F1F1F2";
             document.getElementById("vidBtns").style.color = "#212529";
@@ -104,11 +101,12 @@ module.exports = {
  }
 
 .navbar{
+    padding-top: 40px;
     background-image: url('/images/mysurftvmainmenubg.png');
     background-size: 100% 76px;
     background-repeat: no-repeat;
     background-position: center top;
-    background-color: #e6e6e6;
+    background-color: #dedbdb;
 }
 
 #srchBtn {
@@ -116,6 +114,12 @@ module.exports = {
     right: 60px;
     top: 13px;
 }
+
+#logo {
+    position: absolute;
+    top: 10px;
+}
+
 
 #barsBtn {
     position: absolute;
@@ -137,7 +141,7 @@ module.exports = {
 }
 
 .nav-link:hover, .nav-link:focus {
-    color: #A1D6E2 !important;
+    color: #2d3f51 !important;
 }
 
 .search{
@@ -172,6 +176,8 @@ module.exports = {
     #logo {
         width: 60px;
         height: 60px;
+        position: absolute;
+        top: 5px;
     }
  }
 
@@ -180,6 +186,7 @@ module.exports = {
   width: 60px;
   height: 34px;
   right: 2px;
+  top: 15px;
 }
 
 /* Hide default HTML checkbox */
@@ -257,23 +264,22 @@ input:checked + .slider:before {
 	text-align: right;
 }
 
-
-#offOn {
-	position: relative;
-	top: 33px;
-    right: 6.5px;
-    font-size: 14px;
-}
-
  @media only screen and (min-width: 991px) {
      .navbar {
          background-size: cover;
          color: #F1F1F2 !important;
+         height: 80px;
+     }
+
+     .navbar-nav {
+         position: absolute;
+         left: 100px;
      }
 
      .nav-link{
         color: #F1F1F2 !important; 
         font-weight: 650;
+        padding-bottom: 50px;
     }
 
      #logo {
@@ -293,16 +299,9 @@ input:checked + .slider:before {
      }
 
      #darkTitle {
-         position: relative;
          display: inline-block;
          float: right;
          top: 3px;
-         color: #F1F1F2;
-     }
-
-     #offOn {
-         right: -75px;
-         top: 36px;
          color: #F1F1F2;
      }
  }
@@ -316,7 +315,7 @@ input:checked + .slider:before {
         color: #F1F1F2;
     }
 
-    #offOn, #darkTitle {
+    #darkTitle {
         color: black;
     }
 }

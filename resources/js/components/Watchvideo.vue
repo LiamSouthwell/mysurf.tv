@@ -1,32 +1,28 @@
 
 <template>
-	<div>
+	<div style="max-height:875px;">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
 		<div class="embed-responsive embed-responsive-16by9">
 			<div id="#player-container" class="videoplayer"> </div>
 		</div>
-		<div id="vidInfo">
-			<h2>{{this.title}}</h2>
-		</div>
-
-
-
-
-		<div id="vidBtns" > 
-			<div style="width: 10px; height: 10px; z-index: 2;">
-				<i class="material-icons" @click="addToPlaylist()">
-					playlist_add
-				</i>
-				<label id="addPlaylist">Add to playlist</label>
+		<div id="titleBtns">
+			<div id="vidInfo">
+				<h2>{{this.title}}</h2>
 			</div>
-
-			<div id="autoplay">
-				<span>Autoplay next video</span>
-				<label class="switch">
-					<input type="checkbox">
-					<span class="slider round"></span>
-				</label>
-
+			<div id="vidBtns" > 
+				<div id="addBtn" style="z-index: 2;" @click="addToPlaylist()">
+					<i class="material-icons" >
+						playlist_add
+					</i>
+					<label id="addPlaylist">Add to playlist</label>
+				</div>
+				<div id="autoplay">
+					<label>Autoplay next video</label>
+					<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</div>
 			</div>
 		</div>
 
@@ -196,7 +192,11 @@ export default {
     left: 0px;
     width: 100% !important;
     height: 100% !important;
+		max-height: 675px;
+}
 
+#titleBtns {
+	height: 140px;
 }
 
 #vidInfo {
@@ -208,27 +208,36 @@ export default {
 	margin-right: auto;
 }
 
+
 #autoplay {
-	height: 75px;
+	height: 60px;
 	width: 49%;
 	margin-left: 50%;
 	position: relative;
 	text-align: right;
 	right: 0;
 	margin-right: 5px;
-	top: -20px;
+	top: -60px;
 	z-index: 1;
+	background-color: #2d3f51;
+	border: 3px solid white;
+}
+
+#addBtn {
+	color: black;
+	width: 35%;
+	height: 35px;
+	background-color: #dedbdb;
 }
 
 #vidBtns {
 	z-index: -1;
-	background-color: #F1F1F1;
 	padding-top: 15px
 }
 
 span {
 	position: absolute;
-	right: 68px;
+	right: 78px;
 	top: 10px;
 }
 
@@ -236,12 +245,18 @@ span {
 	position: absolute;
 	left: 35px;
 	float: left;
+	height: 34px;
+	width: 110px;
+	color: black;
+	background-color: #dedbdb;
+	padding-top: 5px;
 }
 
 .material-icons {
 	position: absolute;
-	left: 10px;
+	left: 5px;
 	float: left;
+	padding-top: 5px;
 }
 
 #toggleLabels, {
@@ -252,6 +267,7 @@ span {
 label {
 	position: absolute;
 	right: 12px;
+	color: #C4DFE6;
 }
 
 #offOn {
@@ -264,7 +280,7 @@ label {
   width: 60px;
   height: 34px;
 	right: 5px;
-	top: 8px;
+	top: 20px;
 }
 
 /* Hide default HTML checkbox */
@@ -322,10 +338,33 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+
 </style>
 <style>
+@media only screen and (min-width: 1170px) {
+	.video-js.vjs-quality-menu{
+	width: 100%;
+	height: 80%;
+	max-height: 675px;
+}
+}
+
 .video-js.vjs-quality-menu{
 	width: 100%;
 	height: 100%;
 }
-	</style>
+
+@media only screen and (min-width: 1300px) {
+	#vidInfo {
+		position: relative;
+		top: -20px;
+	}
+}
+
+@media only screen and (min-width: 1360px) {
+	#titleBtns {
+		position: relative;
+		top: -200px;
+	}
+}
+</style>
