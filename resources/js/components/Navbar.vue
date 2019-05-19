@@ -2,11 +2,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark mb-2">
         
             <router-link to="/"><div class="navbar-brand"><img id="logo"  src="/images/mysurftvlogo.png" width="50" height="50" ></div></router-link>
-            <button class="navbar-toggler" id="srchBtn" data-toggle="collapse" data-target="#searchBar">
+            <button class="navbar-toggler" id="srchBtn" data-toggle="collapse" data-target="#searchBar"  @click="hideMenu">
                 <span class="fa fa-search" aria-hidden="true"></span>
             </button>
 
-            <button class="navbar-toggler" id="barsBtn" data-toggle="collapse" data-target="#navbarMenu">
+            <button class="navbar-toggler" id="barsBtn" data-toggle="collapse" data-target="#navbarMenu" @click="hideSearch">
                 <span class="fa fa-bars"></span>
             </button>
             
@@ -50,7 +50,6 @@
                     <button class="searchbtn btn" @click="search()"> Go </button>
                 </div>
             </div>
-        
     </nav>
 </template>
 <script>
@@ -83,6 +82,12 @@ module.exports = {
             document.getElementById("header").style.color = "#F1F1F2";
             document.getElementById("vidBtns").style.color = "#212529";
         }
+    },
+    hideSearch: function(){
+        $('#searchBar').collapse("hide");
+    },
+    hideMenu: function(){
+        $('#navbarMenu').collapse("hide");
     }
   }
 }
