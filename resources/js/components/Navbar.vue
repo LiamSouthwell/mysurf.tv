@@ -16,10 +16,10 @@
                     <a href="/playlists" class="nav-link">Watch</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/latest" class="nav-link">Latest</a>
+                    <router-link to="/latest" class="nav-link">Latest</router-link>
                 </li>
                 <li class="nav-item">
-                    <a href="/trending" class="nav-link">Trending</a>
+                    <router-link to="/trending" class="nav-link">Trending</router-link>
                 </li>
                 <li class="nav-item">
                     <a href="/login" v-if="this.user == null" class="nav-link">Login</a>

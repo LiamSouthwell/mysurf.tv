@@ -52,7 +52,7 @@ Vue.component('maincomponent', require('./components/MainComponent.vue').default
 const routes = [
     { 
 	    path: '/search/:terms', 
-		components:{default: videolist},
+		components:{viewport: videolist},
 		props: true	  
 	},
 	{
@@ -70,12 +70,12 @@ const routes = [
     {
     	path: '/watch/:id', 
 		components: {default: watchvideo, viewport: videolist}	  
-		},
-		{
-			path: '/latest',
-			components: {default: videolist}
-		},
-		{
+	},
+	{
+		path: '/latest',
+		components: {default: videolist}
+	},
+	{
 		path: '/trending',
 		components: {default: videolist}
     }
