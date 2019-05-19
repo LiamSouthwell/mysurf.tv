@@ -106,4 +106,9 @@ class VideoController extends Controller
             return ["none"];
     }
 
+    public function getVideo($id){
+        $videoGrabber = new FetchVideos();
+        return $videoGrabber->video($id);
+    }
+
 }

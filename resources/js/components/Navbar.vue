@@ -30,7 +30,9 @@
                 <li class="nav-item" v-if="this.user != null">
                     <a href="/logout" class="nav-link">Logout</a>
                 </li>
-
+                <li class="nav-item" v-if="this.user != null">
+                    <router-link to="/userplaylists" class="nav-link">My Playlists</router-link>
+                </li>
                 <li class="nav-item">
                     <div id="darkMode">
                         <span id="darkTitle">Dark Mode</span>

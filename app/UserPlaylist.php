@@ -9,8 +9,14 @@ class UserPlaylist extends Model
 	protected $fillable = [
         'name'
     ];
+    
         public function video()
     {
-        return $this->belongsTo('App\UserPlaylistVideo');
+        return $this->hasMany('App\UserPlaylistVideo');
+    }
+
+        public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

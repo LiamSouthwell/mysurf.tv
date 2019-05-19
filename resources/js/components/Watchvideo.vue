@@ -8,9 +8,13 @@
 		<div id="vidInfo">
 			<h2>{{this.title}}</h2>
 		</div>
-		<div id="vidBtns">
-			<div>
-				<i class="material-icons" v-on:click="addToPlaylist">
+
+
+
+
+		<div id="vidBtns" > 
+			<div style="width: 10px; height: 10px; z-index: 2;">
+				<i class="material-icons" @click="addToPlaylist()">
 					playlist_add
 				</i>
 				<label id="addPlaylist">Add to playlist</label>
@@ -22,11 +26,43 @@
 					<input type="checkbox">
 					<span class="slider round"></span>
 				</label>
-				<div id="toggleLabels">
-				<label id="offOn">Off/On</label>
-				</div>
+
 			</div>
 		</div>
+
+<div class="modal fade" id="addToPlaylistModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add to Playlist</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div v-if="loading">
+
+      	</div>
+      	<div v-else>
+	        <div v-if="this.playlists.length == 0"> 
+	        	There are no playlists to display.
+	        	Visit <router-link data-dismiss="modal" to="/userplaylists"> here </router-link> to add one. 
+	        </div>
+	        <div v-else >
+		        	<div class="list-group">
+						<button v-for="playlist in this.playlists" type="button" @click="addVideoToPlaylist(playlist.id)" class="list-group-item list-group-item-action">{{playlist.name}}</button>	
+		        	</div>
+	        </div>
+    	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 	</div>
 
 </template>
@@ -47,6 +83,8 @@ export default {
             	autoplay: true,
             	title: "",
             	user: ["none"],
+            	playlists: [],
+            	loading: true
             }
         },
         watch:{
@@ -66,20 +104,35 @@ export default {
 	            .get('/getUser')
 	            .then((response => {
 	            	this.user = response.data;
-	            	console.log(response.data);
 	            }));
 
         },
         methods:{
         	addToPlaylist: function(){
-        		if(this.user[0] != ["none"])
+        		if(this.user[0] != ["none"]){
         			console.log(this.user);
+        			this.getPlaylists();
+        		 	$('#addToPlaylistModal').modal('show');
+        		 }
         		else
         			window.location.href = "/register";
-
-
         	},
+        	addVideoToPlaylist: function($id){
+        			axios
+	            .post('/addvideotoplaylist', {"videoid": this.videoID, "playlistid": $id})
+	            .then((response => {
+						alert("Saved your video to the playlist.");
+	            }));
+        	},
+        	getPlaylists: function(){
+        			axios
+	            .get('/fetchuserplaylists')
+	            .then((response => {
+	                	this.playlists = response.data;
+	                	this.loading = false;
 
+	            }));
+        	},
         	playPlayer: function(){
 
 	        	brightcovePlayerLoader({
@@ -157,15 +210,18 @@ export default {
 
 #autoplay {
 	height: 75px;
-	width: 100%;
+	width: 49%;
+	margin-left: 50%;
 	position: relative;
 	text-align: right;
 	right: 0;
 	margin-right: 5px;
 	top: -10px;
+	z-index: 1;
 }
 
 #vidBtns {
+	z-index: -1;
 	background-color: #F1F1F1;
 	padding-top: 15px
 }

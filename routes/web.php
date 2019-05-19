@@ -21,6 +21,15 @@ Route::get('/searchPlaylists', 'VideoController@searchPlaylists');
 Route::post('/searchPlaylist', 'VideoController@searchPlaylist');
 Route::post('/fetchrelated', 'VideoController@getRelated');
 Route::get('/fetchrecent', 'VideoController@getRecent');
+Route::get('/fetchvideo/{id}', 'VideoController@getVideo');
+
+Route::get('/fetchuserplaylists', 'UserPlaylistController@fetch');
+Route::post('/adduserplaylist', 'UserPlaylistController@store');
+
+Route::get('/fetchplaylistvideos/{id}', 'UserPlaylistController@playlistvideos');
+
+Route::post('/addvideotoplaylist', 'UserPlaylistController@addvideotoplaylist');
+
 
 Route::get('/tester', 'VideoController@tester');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

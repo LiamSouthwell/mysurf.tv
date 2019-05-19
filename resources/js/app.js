@@ -16,6 +16,8 @@ import navbar from './components/Navbar.vue';
 import carousel from './components/Carousel.vue';
 import footerbar from './components/Footerbar.vue';
 import maincomponent from './components/MainComponent.vue';
+import userplaylists from './components/UserPlaylists.vue';
+
 
 window.Vue = require('vue');
 Vue.use(VueRouter);
@@ -60,6 +62,10 @@ const routes = [
     {
     	path: '/', 
 		components: {default: maincomponent}	  
+    },
+    {
+    	path: '/userplaylists', 
+		components: {default: userplaylists}	  
     },
     {
     	path: '/watch/:id', 
