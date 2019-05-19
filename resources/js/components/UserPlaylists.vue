@@ -7,7 +7,7 @@
 		
 		<div v-else>
 			<div v-for="playlist in playlists">
-				{{playlist.name}}
+				<carousel  :title="playlist.name" :videos="[]"> </carousel>
 			</div>
 		</div>
 
@@ -53,6 +53,7 @@
     data () {
         return {
         	playlists: [],
+        	playlistsCarousel: [],
         	newPlaylistName: "",
         	loading: true
     	}
@@ -65,10 +66,9 @@
     			axios
             .get('/fetchuserplaylists')
             .then((response => {
-
                 	this.playlists = response.data;
+                	this.getVideosForPlaylists();
                 	this.loading = false;
-    				console.log(response.data);
 
             }));
     	},
@@ -83,6 +83,21 @@
                 	this.playlists = resonse.data;
                 }
             }));
+    	},
+    	getVideosForPlaylists: function(){
+    		this.playlists.forEach(function (playlist) {
+	    			axios
+	    		.get('/fetchplaylistvideos/' + playlist.id)
+	    		.then((response=>{
+	    			console.log("TEST");
+	    			console.log(response.data);
+
+	    		}));
+    		})
+
+
+
+
     	}
     }
 }

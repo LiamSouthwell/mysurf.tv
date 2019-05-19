@@ -48,10 +48,10 @@
 	        	There are no playlists to display.
 	        	Visit <router-link data-dismiss="modal" to="/userplaylists"> here </router-link> to add one. 
 	        </div>
-	        <div v-else>
-	        	<div v-for="playlist in this.playlists">
-	        	{{playlist.name}}
-	        	</div>
+	        <div v-else >
+		        	<div class="list-group">
+						<button v-for="playlist in this.playlists" type="button" @click="addVideoToPlaylist(playlist.id)" class="list-group-item list-group-item-action">{{playlist.name}}</button>	
+		        	</div>
 	        </div>
     	</div>
       </div>
@@ -104,7 +104,6 @@ export default {
 	            .get('/getUser')
 	            .then((response => {
 	            	this.user = response.data;
-	            	console.log(response.data);
 	            }));
 
         },
@@ -118,19 +117,22 @@ export default {
         		else
         			window.location.href = "/register";
         	},
-
+        	addVideoToPlaylist: function($id){
+        			axios
+	            .post('/addvideotoplaylist', {"videoid": this.videoID, "playlistid": $id})
+	            .then((response => {
+						alert("Saved your video to the playlist.");
+	            }));
+        	},
         	getPlaylists: function(){
         			axios
 	            .get('/fetchuserplaylists')
 	            .then((response => {
 	                	this.playlists = response.data;
-	                	console.log(response.data);
-	                	console.log("^^^^");
 	                	this.loading = false;
 
 	            }));
         	},
-
         	playPlayer: function(){
 
 	        	brightcovePlayerLoader({

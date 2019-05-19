@@ -25,6 +25,9 @@ Route::get('/fetchrecent', 'VideoController@getRecent');
 Route::get('/fetchuserplaylists', 'UserPlaylistController@fetch');
 Route::post('/adduserplaylist', 'UserPlaylistController@store');
 
+Route::get('/fetchplaylistvideos/{id}', 'UserPlaylistController@playlistvideos');
+
+Route::post('/addvideotoplaylist', 'UserPlaylistController@addvideotoplaylist');
 
 
 Route::get('/tester', 'VideoController@tester');

@@ -28,6 +28,6 @@ class CreateUserPlaylistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_playlist');
+        Schema::dropIfExists('user_playlists');
     }
 }
