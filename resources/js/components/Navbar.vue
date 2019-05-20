@@ -47,7 +47,7 @@
             <div class="collapse navbar-collapse" id="searchBar">
                 <div class="active-cyan-3 active-cyan-4" id="srch"> 
                     <input id="searchTerms" class="form-control search" type="text" placeholder="What are you looking for?" aria-label="Search">
-                    <button class="searchbtn btn" @click="search()"> Go </button>
+                    <button class="searchbtn btn" @click="search()"> Search </button>
                 </div>
             </div>
     </nav>
@@ -160,7 +160,7 @@ ul {
 }
 
 .search{
-    width: 78%;
+    width: 70%;
     float: left;
 }
 
@@ -168,7 +168,7 @@ ul {
     margin-left: 2px;
     background-color: #2d3f51;
     color: white;
-    width: 20%;
+    width: 29%;
 }
 
 #searchTerms {
@@ -299,6 +299,12 @@ input:checked + .slider:before {
      #logo {
         width: 80px;
         height: 80px;
+    }
+
+    .searchBtn {
+        position: absolute;
+        right: 5px;
+        width: 75px;
     }
 
      #searchBar {
