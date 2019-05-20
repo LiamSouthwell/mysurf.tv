@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark mb-2">
         
-            <router-link to="/"><div class="navbar-brand"><img id="logo"  src="/images/mysurftvlogo.png" width="50" height="50" ></div></router-link>
+            <router-link to="/"><div class="navbar-brand"><img id="logo"  src="/images/mysurftvlogo.png" width="50" height="50" @click="hideMenuSearch" ></div></router-link>
             <button class="navbar-toggler" id="srchBtn" data-toggle="collapse" data-target="#searchBar"  @click="hideMenu">
                 <span class="fa fa-search" aria-hidden="true"></span>
             </button>
@@ -12,21 +12,21 @@
             
             <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav">
-                <li class="nav-item" v-if="this.user != null">
+                <li class="nav-item" v-if="this.user != null" @click="hideMenu">
                     <a class="nav-link">Welcome, {{this.user.name}}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" @click="hideMenu">
                     <a href="/login" v-if="this.user == null" class="nav-link">Login</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" @click="hideMenu">
                     <router-link to="/latest" class="nav-link">Latest</router-link>
                 </li>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" @click="hideMenu">
                     <router-link to="/trending" class="nav-link">Trending</router-link>
                 </li>
-                <li class="nav-item" v-if="this.user != null">
+                <li class="nav-item" v-if="this.user != null" @click="hideMenu">
                     <router-link to="/userplaylists" class="nav-link">My Playlists</router-link>
                 </li>
                 <li class="nav-item">
@@ -38,7 +38,7 @@
                         </label>
 		            </div>
                 </li>
-                <li class="nav-item" v-if="this.user != null">
+                <li class="nav-item" id="logout" v-if="this.user != null">
                     <a href="/logout" class="nav-link">Logout</a>
                 </li>
             </ul>
@@ -65,7 +65,8 @@ module.exports = {
 
     methods: {
     search: function() {
-      this.$router.push({path: '/search/' + document.getElementById("searchTerms").value})
+      this.$router.push({path: '/search/' + document.getElementById("searchTerms").value});
+      $('#searchBar').collapse("hide");
     },
     toggleClass: function() {
         if(this.isActive){
@@ -88,6 +89,10 @@ module.exports = {
     },
     hideMenu: function(){
         $('#navbarMenu').collapse("hide");
+    },
+    hideMenuSearch: function(){
+        $('#navbarMenu').collapse("hide");
+        $('#searchBar').collapse("hide");
     }
   }
 }
@@ -112,6 +117,7 @@ module.exports = {
     background-repeat: no-repeat;
     background-position: center top;
     background-color: #dedbdb;
+    padding-bottom: 20px;
 }
 
 ul {
@@ -137,7 +143,7 @@ ul {
 }
 
 #srch {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .navbar-nav {
@@ -325,6 +331,10 @@ input:checked + .slider:before {
 
     #darkTitle {
         color: black;
+    }
+
+    #logout {
+        margin-top: 10px;
     }
 }
 
