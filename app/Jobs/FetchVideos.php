@@ -22,15 +22,12 @@ class FetchVideos
      */
     public function __construct()
     {
-        return "Testing";
+        return "";
     }
 
     /**
-     * Execute the job.
-     *
-     * @return void
+     * Grab a specific video given an ID
      */
-
     public function video($id){
         $client = new Client();
         $res = $client->request(
@@ -46,7 +43,9 @@ class FetchVideos
         }
     }
 
-
+    /**
+     * Grab an array of related videoinfo given a video ID
+     */
     public function related($id){
         $client = new Client();
         $res = $client->request(
@@ -62,6 +61,9 @@ class FetchVideos
         }
     }
 
+    /**
+     * Grab an array of 20 videos recently uploaded to brightcove
+     */
 
     public function recent(){
         $client = new Client();
@@ -79,6 +81,10 @@ class FetchVideos
             return $res->getBody()->getContents();
     }
 
+    /**
+     * Grab an array of 20 videos given a number of URI encoded terms
+     */
+
     public function search($terms){
         $client = new Client();
         $res = $client->request(
@@ -94,6 +100,10 @@ class FetchVideos
         else
             return $res->getBody()->getContents();
     }
+
+    /**
+     * Grab an array of 20 videos that have the most views in the past 30 days
+     */
 
     public function trending()
     {
@@ -138,7 +148,9 @@ class FetchVideos
             return json_decode($res->getBody()->getContents())->access_token;
     }
 
-
+    /**
+     * Create an array of videoinfo given an array of video ID's
+     */
     private function fetchVideos($videos){
         $client = new Client();
         $videoInfo = [];
