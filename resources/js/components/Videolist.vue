@@ -14,6 +14,9 @@
                         <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
                           <figure class="sixteen-nine-img"> 
                             <img style="width: inherit; height: inherit; " :src="video.thumbnail" :id="'thumbnail'+index"/>
+                              <div class="overlay">
+                                <div class="text">{{video.description}}</div>
+                              </div>
                           </figure>
 
                         <div class="titlewrap">
@@ -41,6 +44,11 @@
       padding-top: 56.25%;
       position: relative;
     }
+
+    img{
+        height: inherit;
+        margin: auto;
+    }
     
     figure.sixteen-nine-img img {
       position: absolute;
@@ -59,7 +67,6 @@
         font-weight: bold; 
         padding-bottom: 15px;
         color: #2d3f51;
-        border-top: 1px solid grey;
         padding-top: 20px;
     }
     
@@ -87,7 +94,7 @@
         margin: auto;
         transform: scaleY(0);
         transition: transform .3s;
-        background-image: linear-gradient(#1995AD, rgba(255,0,0,0));
+        background-image: linear-gradient(#2d3f51, rgba(255,0,0,0));
         white-space: pre-wrap;
         width: 100%;
         position: absolute;
@@ -106,7 +113,7 @@
         margin: auto;
         transform: scaleY(0);
         transition: transform .3s;
-        background-image: linear-gradient(rgba(255,0,0,0), black);
+        background-image: linear-gradient(rgba(255,0,0,0), #2d3f51);
         white-space: pre-wrap;
         width: 100%;
         position: absolute;
@@ -129,7 +136,36 @@
         color: #F1F1F2;
         padding-left: 5px;
     }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #2d3f51;
+      overflow: hidden;
+      width: 100%;
+      height: 0;
+      transition: .5s ease;
+      z-index: 999;
+      padding-left: 10px;
+      margin-right: 10px;
+    }
 
+    .video:hover .overlay {
+      height: 100%;
+    }
+
+    .text {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
     .footerinfo{
         font-weight: 400;
         margin-top: 10px;
@@ -152,7 +188,6 @@
     }
 
     .myCol {
-        padding-bottom: 10px;
         margin-bottom: 25px;
         padding-left: 0;
         padding-right: 0;

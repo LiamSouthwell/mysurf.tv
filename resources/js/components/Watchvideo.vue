@@ -3,7 +3,7 @@
 	<div style="max-height:875px;">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
 		<div class="embed-responsive embed-responsive-16by9">
-			<div id="#player-container" class="videoplayer"> </div>
+			<div id="#player-container" class="videoplayer embed-responsive-item" > </div>
 		</div>
 		<div id="titleBtns">
 			<div id="vidInfo">
@@ -19,7 +19,7 @@
 				<div id="autoplay">
 					<label id="apLabel">Autoplay next video</label>
 					<label class="switch">
-						<input type="checkbox">
+						<input type="checkbox" v-model="autoplay">
 						<span class="slider round"></span>
 					</label>
 				</div>
@@ -76,7 +76,7 @@ export default {
             return {
             	videoID: 0,
             	nextvideo: [],
-            	autoplay: true,
+            	autoplay: false,
             	title: "",
             	user: ["none"],
             	playlists: [],
@@ -95,7 +95,7 @@ export default {
         	this.videoID = this.$route.params.id;
 					document.getElementById("header").style.color = "#212529";
           document.getElementById("vidBtns").style.color = "#212529";
-					
+				
 			axios
 	            .get('/getUser')
 	            .then((response => {
@@ -184,6 +184,10 @@ export default {
 
 <style scoped>
 
+.embed-responsive{
+	max-height: 675px;
+}
+
 .videoplayer{
     position: absolute;
     top: 0px;
@@ -197,6 +201,7 @@ export default {
 
 #titleBtns {
 	height: 120px;
+	margin-top: 15px;
 }
 
 #vidInfo {
@@ -366,6 +371,9 @@ input:checked + .slider:before {
 	height: 80%;
 	max-height: 675px;
 }
+	.titleBtns{
+		padding-top: 15px;
+	}
 }
 
 .video-js.vjs-quality-menu{
@@ -378,19 +386,11 @@ input:checked + .slider:before {
 		position: relative;
 		top: -20px;
 	}
-}
-
-@media only screen and (min-width: 1360px) {
-	#titleBtns {
+	#titleBtns{
 		position: relative;
-		top: -200px;
 		height: 90px;
+		padding-top: 15px;
 	}
 }
 
-@media only screen and (min-width: 1360px) {
-	#titleBtns {
-		margin-top: 40px;
-	}
-}
 </style>

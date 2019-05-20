@@ -7,6 +7,7 @@
 		<div v-else>
 			<div v-for="playlist in playlistsCarousel">
 				<carousel  :title="playlist.title" :videos="playlist.videos"> </carousel>
+				<button class="btn btn-danger" @click="deletePlaylist(playlist.id)"> Delete Playlist </button>
 			</div>
 		</div>
 
@@ -73,6 +74,15 @@
 
             }));
     	},
+    	deletePlaylist: function(id){
+    		console.log("test" + id);
+    		axios
+            .get('/deleteplaylist/'+id)
+            .then((response => {
+            	this.getPlaylists();
+            }));
+
+    	},
     	addPlaylist: function(){
     		    axios
             .post('/adduserplaylist', {name: this.newPlaylistName})
@@ -82,20 +92,21 @@
 
                 } else { //there are some playlists 
                 	this.playlists = resonse.data;
+                	this.getPlaylists();
                 }
             }));
     	},
     	getVideosForPlaylists: function(){
+    		this.playlistsCarousel = [];
     		this.playlists.forEach((playlist) => {
     			var name = playlist.name;
+    			var id = playlist.id;
 	    			axios
 	    		.get('/fetchplaylistvideos/' + playlist.id)
 	    		.then((response=>{
 	    			var videos = response.data;
-	    			var playlist = {'title': name, 'videos': videos};
-	    			this.playlistsCarousel.push(playlist);
-
-    		
+	    			var playlist = {'title': name, 'videos': videos, 'id' : id};
+	    			this.playlistsCarousel.push(playlist);    		
 	    		}));
     		})
 			this.loading = false;	
@@ -105,3 +116,11 @@
 
 
 </script>
+<style scoped>
+
+	.btn-danger{
+		margin-left: 50%;
+	}
+
+
+</style>

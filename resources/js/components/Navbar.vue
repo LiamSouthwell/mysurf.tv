@@ -31,7 +31,7 @@
                 </li>
                 <li class="nav-item">
                     <div id="darkMode">
-                        <span id="darkTitle">Enable Dark Mode</span>
+                        <span id="darkTitle">Dark Mode</span>
                         <label class="switch">
                             <input type="checkbox" @click="toggleClass()">
                             <span class="slider round"></span>

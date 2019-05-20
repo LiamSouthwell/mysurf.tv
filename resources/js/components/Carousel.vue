@@ -9,7 +9,7 @@
                 <div v-for="video in videos" class="card">
                     <router-link :to="'/watch/'+video.id" >
                         <thumbnail  :title="video.name" :thumbnail="video.thumbnail" :duration="video.duration" :created_at="video.created_at"> </thumbnail>
-                    
+
                     <div class="titlewrap">
                         <h4 class="title">{{video.name}}</h4>
                     </div>
@@ -18,7 +18,9 @@
                         <h4 class="footerinfo">{{msToTime(video.duration)}}</h4>
                         <h4 class="footerinfo pull-right">{{createdAt(video.created_at)}}</h4>
                     </div>
+
                     </router-link>
+
                 </div>
             </div>
             <div class="scrolling-btns" >
@@ -77,6 +79,10 @@ export default {
       text-align: center;
   }
 
+  img{
+    width: 100%;
+  }
+
  .scrolling-wrapper {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -88,7 +94,7 @@ export default {
     position: relative;
     width: 365px;
     background: #dddddd;
-    border: 2px solid #F1F1F2;
+    border: 2px solid #F1F1F2; 
   }
   .titlewrap{
     position: absolute;

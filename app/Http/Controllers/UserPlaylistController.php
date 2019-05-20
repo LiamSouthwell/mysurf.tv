@@ -39,6 +39,10 @@ class UserPlaylistController extends Controller
     	return "Saved";
     }
 
+    public function delete($id){
+        return UserPlaylist::where('id', '=', $id)->delete();
+    }
+
     private function getVideo($id){
         $videoGrabber = new FetchVideos();
         return $videoGrabber->video($id);
