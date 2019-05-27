@@ -1,6 +1,7 @@
 
 <template>
     <div>
+        <br style="clear: both">
         <h2  id="header" v-if="$route.params.id != null" >Related</h2>
         <h2  id="header" v-else-if="$route.path == '/trending'">Trending</h2>
         <h2  id="header" v-else-if="$route.path == '/latest'">Latest</h2>
@@ -13,9 +14,16 @@
                     <div class="video embed-responsive-item">
                         <router-link :to="'/watch/'+video.id" :id="'link'+index" style="width: inherit; height: inherit">
                           <figure class="sixteen-nine-img"> 
-                            <img style="width: inherit; height: inherit; " :src="video.thumbnail" :id="'thumbnail'+index"/>
-                              <div class="overlay">
-                                <div class="text">{{video.description}}</div>
+                            <img style="width: inherit; height: inherit; " :src="video.poster" :id="'thumbnail'+index"/>
+                              <div class="overlaywrapper">
+                                <div class="overlay">
+                                    <div class="overlaytitle">
+                                        {{video.name}}
+                                    </div>
+                                    <div class="overlaydescription">
+                                        {{video.description}}
+                                    </div>
+                                </div>
                               </div>
                           </figure>
 
@@ -37,6 +45,9 @@
 </template>
 
 <style scoped>
+
+
+
     figure.sixteen-nine-img {
       width: 100%;
       overflow: hidden;
@@ -136,12 +147,12 @@
         color: #F1F1F2;
         padding-left: 5px;
     }
-    .overlay {
+    .overlaywrapper {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: #2d3f51;
+      background-color: rgba(255,255,255,0.2);
       overflow: hidden;
       width: 100%;
       height: 0;
@@ -151,21 +162,36 @@
       margin-right: 10px;
     }
 
-    .video:hover .overlay {
+    .video:hover .overlaywrapper {
       height: 100%;
     }
 
-    .text {
+    .overlay {
       color: white;
       font-size: 20px;
       position: absolute;
       top: 50%;
       left: 50%;
+      text-align: left !important;
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       text-align: center;
     }
+
+    .overlaytitle{
+        font-size: 24px;
+        margin: 10px;
+        padding-right: 10px;
+    }
+
+
+    .overlaydescription{
+        font-size: 18px;
+        margin: 10px;
+        padding-right: 10px;
+    }
+
     .footerinfo{
         font-weight: 400;
         margin-top: 10px;
@@ -204,23 +230,6 @@
         text-align: center;
     }
 
-    @media only screen and (min-width: 900px) {
-        .container {
-            align-content: flex-start;
-        }
-
-        .vids {
-            display: flex;
-            flex-flow: row wrap;
-        }
-    }
-
-    @media only screen and (max-width: 400px) {
-
-      .videoInfo {
-          margin: auto;
-      }
-    }
 
 </style>
 
@@ -237,6 +246,8 @@
         mounted() {
             this.loadThumbnails();
             document.body.style.backgroundColor = "#e6e6e6";
+
+
         },
         watch:{
             $route (to, from){
@@ -259,7 +270,7 @@
                 .post('/search', {terms: this.terms})
                 .then((response => {
                     this.videos = response.data.videos;
-                    this.loading = false;
+                    this.loading = false;             
                 }));
                 }
             },

@@ -7,7 +7,8 @@
 		<div v-else>
 			<div v-for="playlist in playlistsCarousel">
 				<carousel  :title="playlist.title" :videos="playlist.videos"> </carousel>
-				<button class="btn btn-danger" @click="deletePlaylist(playlist.id)"> Delete Playlist </button>
+				<br style="clear: both;">
+				<button class="btn btn-danger col-md-4 offset-md-4" @click="deletePlaylist(playlist.id)"> Delete Playlist </button>
 			</div>
 		</div>
 
@@ -118,9 +119,6 @@
 </script>
 <style scoped>
 
-	.btn-danger{
-		margin-left: 50%;
-	}
 
 
 </style>

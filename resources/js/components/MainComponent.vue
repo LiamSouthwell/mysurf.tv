@@ -1,6 +1,8 @@
 
 <template>
     <div>
+
+
         <div v-for="list in carousels">
             <carousel  :title="list.title" :videos="list.videos"> </carousel>
         </div>
@@ -41,7 +43,6 @@ export default {
         }));
         document.body.style.backgroundColor = "#e6e6e6";
         document.body.style.color = "#212529";
-        document.getElementById("header").style.color = "#2d3f51";
     },
     methods: {
 
@@ -50,5 +51,21 @@ export default {
 </script>
 
 <style scoped>
+    .carousel{
+        width: 85%;
+        margin: auto;
+        padding-bottom: 65px;
+        padding-top: 65px;
+    }
+    img{
+        display: block;
+        max-width: 100%;
+        height: auto !important;
+        vertical-align: middle;
+    }
+    .carousel-item{
 
+        max-height: 320px;
+        overflow: hidden; 
+    }
 </style>
