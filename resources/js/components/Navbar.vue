@@ -197,7 +197,7 @@ ul {
  }
 
  .switch {
-  position: absolute;
+  position: relative;
   width: 60px;
   height: 34px;
   right: 2px;
@@ -277,7 +277,9 @@ input:checked + .slider:before {
     font-weight: bold;
 	text-align: right;
 }
-
+.navbar-nav {
+   margin-bottom: 10px;
+}
  @media only screen and (min-width: 991px) {
      .navbar {
          background-size: cover;

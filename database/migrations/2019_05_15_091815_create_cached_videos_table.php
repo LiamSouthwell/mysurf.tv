@@ -18,7 +18,7 @@ class CreateCachedVideosTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('duration');
-            $table->string('thumbnail');
+            $table->string('poster');
             $table->string('id');
             $table->string('list');
             $table->timestamps();

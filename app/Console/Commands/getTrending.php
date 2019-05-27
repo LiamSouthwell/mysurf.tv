@@ -53,7 +53,7 @@ class getTrending extends Command
             else
                 $newvideo->description = " ";
             $newvideo->duration = $video->duration;
-            $newvideo->thumbnail = $video->thumbnail;
+            $newvideo->poster = $video->poster;
             $newvideo->id = $video->id;
             $newvideo->list = "trending";
             $newvideo->save();

@@ -8,6 +8,7 @@
 		<div id="titleBtns">
 			<div id="vidInfo">
 				<h2>{{this.title}}</h2>
+				<p> {{this.description}} </p>
 			</div>
 			<div id="vidBtns" > 
 				<div id="addBtn" style="z-index: 2;" @click="addToPlaylist()">
@@ -144,6 +145,7 @@ export default {
 
 				  myPlayer.on('loadedmetadata',()=>{
 				  	this.title = myPlayer.mediainfo.name;
+				  	this.description = myPlayer.mediainfo.description;
 				    myPlayer.play();
 				  });
 
@@ -201,16 +203,18 @@ export default {
 
 #titleBtns {
 	height: 120px;
-	margin-top: 15px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
 
 #vidInfo {
-	width: 80%;
+	width: 40%;
 	margin-top: 15px;
-	text-align: center;
+	text-align: left;
 	margin-bottom: 15px;
-	margin-left: auto;
+	margin-left: 10%;
 	margin-right: auto;
+	float: left;
 }
 
 #vidInfo > h2 {
@@ -220,33 +224,37 @@ export default {
 
 #autoplay {
 	height: 45px;
-	width: 56%;
+	width: 100%;
 	max-width: 230px;
 	min-width: 215px;
-	position: relative;
 	text-align: right;
 	margin-left: auto;
 	right: 0;
 	z-index: 1;
-	top: -45px;
 	color: black;
 	background-color: #dedbdb;
 	border: 1px solid #bfbfbf;
 	border-radius: 25px;
+	margin-top: 10px;
 }
 
 #addBtn {
 	color: black;
-	width: 40%;
 	height: 45px;
 	background-color: #dedbdb;
 	max-width: 150px;
 	border: 1px solid #bfbfbf;
 	border-radius: 25px;
+	width: 100%;
+	margin-left: auto;
 }
 
 #vidBtns {
 	z-index: -1;
+	width: 35%;
+	float: right;
+	margin-right: 10%;
+	margin-top: 10px;
 }
 
 span {
@@ -256,7 +264,6 @@ span {
 }
 
 #addPlaylist {
-	position: absolute;
 	left: 35px;
 	float: left;
 	height: 34px;
@@ -266,7 +273,7 @@ span {
 }
 
 .material-icons {
-	position: absolute;
+	margin-left: 10px;
 	left: 5px;
 	float: left;
 	padding-top: 10px;
@@ -278,14 +285,13 @@ span {
 }
 
 #apLabel {
-	position: absolute;
-	right: 60px;
-	top: 10px;
-	width: 141px;
+	float:left;
+	margin-top: 10px;
+	margin-left: 10px;
 }
 
 .switch {
-  position: absolute;
+  position: relative;
   width: 55px;
   height: 34px;
 	right: 2px;
@@ -347,10 +353,30 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-@media only screen and (min-wdith: 470px) {
+@media only screen and (max-width: 470px) {
 	#titleBtns {
 		height: 100px;
 	}
+
+	#vidInfo{
+		margin-left: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		width: 100% !important;
+
+	}
+
+	#vidBtns{
+		float: left;
+		margin: auto;
+		width: 100%;
+	}
+
+	#addBtn, #autoplay{
+		margin: auto;
+		margin-top: 10px;
+	}
+
 }
 
 @media only screen and (min-width: 380px) {
@@ -372,8 +398,10 @@ input:checked + .slider:before {
 	max-height: 675px;
 }
 	.titleBtns{
-		padding-top: 15px;
+		width: 100%;
 	}
+
+
 }
 
 .video-js.vjs-quality-menu{
